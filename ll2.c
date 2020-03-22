@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:26:54 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/22 20:02:24 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/22 20:09:22 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,6 +300,7 @@ t_lista		*step_two(t_lista *lista, t_values *values)
 		{
 			if (head->nbr < tail->nbr)
 			{
+				// SEG Faulting here. need to start working with 2 lists.
 				printf("inside if\n");
 				head = pb(head, b);
 				b = pb(head, b);
