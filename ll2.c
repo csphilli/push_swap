@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:26:54 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/22 00:07:37 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/22 10:21:28 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	display_list(t_lista *head)
 
 t_lista	 *sa(t_lista *list)
 {
-	printf("displaying list inside SA\n");
-	display_list(list);
 	t_lista	*head;
 	t_lista *current;
 
@@ -95,21 +93,16 @@ t_lista 	*make_structure(void)
 
 t_lista		*do_head(int nbr)
 {
-	// printf("head->list->nbr:%d\n", list->nbr);
-	// printf("head->nbr:%d\n", nbr);
 	t_lista *head;
 	
 	head = make_structure();
 	head->nbr = nbr;
 	head->next = NULL;
-	printf("head->nbr:%d\n", head->nbr);
 	return (head);
 }
 
 t_lista		*do_new(t_lista *list, int nbr)
 {
-	printf("head->nbr:%d\n", list->nbr);
-	printf("new->nbr:%d\n", nbr);
 	t_lista	*new;
 	t_lista	*current;
 	t_lista	*head;
@@ -117,15 +110,12 @@ t_lista		*do_new(t_lista *list, int nbr)
 	head = list;
 	new = make_structure();
 	current = head;
-	printf("current->nbr:%d\n", current->nbr);
 	while (current->next != NULL)
 		current = current->next;
 	current->next = new;
 	current = new;
 	current->nbr = nbr;
 	current->next = NULL;
-	printf("new current->nbr:%d\n", current->nbr);
-	printf("verify head->nbr:%d\n", head->nbr);
 	return (head);	
 }
 
@@ -142,25 +132,13 @@ t_lista	 *run_program(int ac, char **av)
 	while (ac-- > 1)
 	{
 		nbr = atoi(av[i]);
-		printf("av[%d]:%s\n", i, av[i]);
 		if (i == 1)
-		{
-			printf("do head\n");
 			head = do_head(nbr);
-			printf("\n");
-		}
 		else
-		{
-			printf("do tails\n");
 			current = do_new(head, nbr);
-			printf("\n");
-		}
-		// current->next = NULL;
-		// fill_structure(current, nbr)
 		i++;
 	}
-	// current->next = NULL;
-	// display_list(current);
+	// head = sort(head);
 	return (head);
 
 }
@@ -185,8 +163,10 @@ int	main(int ac, char **av)
 	else
 		ERROR;
 	display_list(head);
-	sa(head);
+	head = sa(head);
+	
 	printf("\n");
+	display_list(head);
 	// display_list(head);
 	while (1)
 	{
