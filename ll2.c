@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:26:54 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/22 10:24:14 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/22 12:09:01 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct 	s_lista
 	struct 	s_lista *next;
 }				t_lista;
 
+
 int		error(void)
 {
 	printf("Error\n");
@@ -37,6 +38,8 @@ void		add_nbr(int nbr);
 t_lista		*do_head(int nbr);
 t_lista		*do_new(t_lista *list, int nbr);
 t_lista		*run_program(int ac, char **av);
+t_lista		*sort(t_lista *head);
+t_lista		*ra(t_lista *list);
 
 
 void	display_list(t_lista *head)
@@ -53,9 +56,6 @@ void	display_list(t_lista *head)
 		i++;
 	}
 }
-
-
-
 
 t_lista	 *sa(t_lista *list)
 {
@@ -78,6 +78,31 @@ t_lista	 *sa(t_lista *list)
 		current->next = head;
 		head->next = NULL;
 		head = current;		
+	}
+	return (head);
+}
+
+t_lista		*ra(t_lista *list)
+{
+	t_lista	*head;
+	t_lista *tail;
+	t_lista	*tmp;
+
+	head = list;
+	tail = head;
+	tmp = head;
+	if (head == NULL || head->next == NULL)
+		ERROR;
+	if (tmp->next == NULL)
+		head = sa(head);
+	else
+	{
+		while (tail->next != NULL)
+			tail = tail->next;
+		tmp = tmp->next;
+		head->next = NULL;
+		tail->next = head;
+		head = tmp;
 	}
 	return (head);
 }
@@ -119,6 +144,9 @@ t_lista		*do_new(t_lista *list, int nbr)
 	return (head);	
 }
 
+
+
+
 t_lista	 *run_program(int ac, char **av)
 {
 	int		nbr;
@@ -131,13 +159,15 @@ t_lista	 *run_program(int ac, char **av)
 	current = NULL;	
 	while (ac-- > 1)
 	{
-		nbr = atoi(av[i]);
+		nbr = atoi(av[i]); // Change to ft_atoi
 		if (i == 1)
 			head = do_head(nbr);
 		else
 			current = do_new(head, nbr);
 		i++;
 	}
+	// head = sort(head);
+	// run order check to see if in order, else create B
 	// head = sort(head);
 	return (head);
 
@@ -164,13 +194,14 @@ int	main(int ac, char **av)
 		ERROR;
 	display_list(head);
 	head = sa(head);
+	head = ra(head);
 	
 	printf("\n");
 	display_list(head);
 	// display_list(head);
-	while (1)
-	{
+	// while (1)
+	// {
 		
-	}
+	// }
 	return (0);
 }
