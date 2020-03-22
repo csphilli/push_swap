@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:26:54 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/22 12:09:01 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/22 13:49:40 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ typedef struct 	s_lista
 	struct 	s_lista *next;
 }				t_lista;
 
+typedef struct	s_stack
+{
+	struct s_lista *lista;
+	struct s_lista *listb;
+}				t_stack;
 
 int		error(void)
 {
@@ -40,6 +45,7 @@ t_lista		*do_new(t_lista *list, int nbr);
 t_lista		*run_program(int ac, char **av);
 t_lista		*sort(t_lista *head);
 t_lista		*ra(t_lista *list);
+t_lista		*rra(t_lista *list);
 
 
 void	display_list(t_lista *head)
@@ -93,16 +99,44 @@ t_lista		*ra(t_lista *list)
 	tmp = head;
 	if (head == NULL || head->next == NULL)
 		ERROR;
+	tmp = tmp->next;
 	if (tmp->next == NULL)
 		head = sa(head);
 	else
 	{
 		while (tail->next != NULL)
 			tail = tail->next;
-		tmp = tmp->next;
+		// tmp = tmp->next;
 		head->next = NULL;
 		tail->next = head;
 		head = tmp;
+	}
+	return (head);
+}
+
+t_lista		*rra(t_lista *list)
+{
+	t_lista	*head;
+	t_lista *tail;
+	t_lista	*tmp;
+
+	head = list;
+	tail = head;
+	tmp = head;
+	if (head == NULL || head->next == NULL)
+		ERROR;
+	tmp = tmp->next;
+	if (tmp->next == NULL)
+		head = sa(head);
+	else
+	{
+		while (tail->next != NULL)
+			tail = tail->next;
+		while (tmp->next != tail)
+			tmp = tmp->next;
+		tail->next = head;
+		tmp->next = NULL;
+		head = tail;
 	}
 	return (head);
 }
@@ -144,7 +178,37 @@ t_lista		*do_new(t_lista *list, int nbr)
 	return (head);	
 }
 
+void		duplicate_check(t_lista *list)
+{
+	t_lista *base;
+	t_lista *iterate;
 
+	base = list;
+	if (base->next != NULL)
+	{
+		while (base->next != NULL)
+		{
+			iterate = base->next;
+			while (iterate != NULL)
+			{
+				if (iterate->nbr == base->nbr)
+					ERROR;
+				iterate = iterate->next;
+			}
+			base = base->next;
+		}
+	}
+}
+
+// t_lista		*sort_head(t_lista *list)
+// {
+// 	t_lista *a;
+// 	t_lista *b;
+
+// 	a = list;
+// 	b = NULL;
+
+// }
 
 
 t_lista	 *run_program(int ac, char **av)
@@ -156,7 +220,7 @@ t_lista	 *run_program(int ac, char **av)
 	
 	i = 1;
 	head = NULL;
-	current = NULL;	
+	current = NULL;
 	while (ac-- > 1)
 	{
 		nbr = atoi(av[i]); // Change to ft_atoi
@@ -166,7 +230,7 @@ t_lista	 *run_program(int ac, char **av)
 			current = do_new(head, nbr);
 		i++;
 	}
-	// head = sort(head);
+	duplicate_check(head);
 	// run order check to see if in order, else create B
 	// head = sort(head);
 	return (head);
@@ -193,12 +257,6 @@ int	main(int ac, char **av)
 	else
 		ERROR;
 	display_list(head);
-	head = sa(head);
-	head = ra(head);
-	
-	printf("\n");
-	display_list(head);
-	// display_list(head);
 	// while (1)
 	// {
 		
