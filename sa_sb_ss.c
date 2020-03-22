@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/21 21:19:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/21 21:27:37 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/22 13:55:12 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_lista	 *sa(t_lista *list)
 
 	head = list;
 	current = head;
-	if (head->next == NULL)
+	if (head == NULL || head->next == NULL)
 		ERROR;
 	current = current->next;
 	if (current->next != NULL)
@@ -39,14 +39,14 @@ t_lista	 *sa(t_lista *list)
 	return (head);
 }
 
-t_listb	 *sb(t_listb *list)
+t_lista	 *sb(t_lista *list)
 {
-	t_listb	*head;
-	t_listb *current;
+	t_lista	*head;
+	t_lista *current;
 
 	head = list;
 	current = head;
-	if (head->next == NULL)
+	if (head == NULL || head->next == NULL)
 		ERROR;
 	current = current->next;
 	if (current->next != NULL)

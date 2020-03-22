@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:26:54 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/22 13:49:40 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/22 20:02:24 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ typedef struct 	s_lista
 	struct 	s_lista *next;
 }				t_lista;
 
+typedef struct	s_values
+{
+	int	midpoint;
+}				t_values;
+
 typedef struct	s_stack
 {
 	struct s_lista *lista;
@@ -38,14 +43,19 @@ int		error(void)
 // void		structure(int nbr, int i);
 // void		fill_structure(t_lista *list, int nbr);
 void		display_list(t_lista *head);
-t_lista 	*make_structure(void);
+t_lista 	*make_list_structure(void);
+t_values 	*make_value_structure(void);
 void		add_nbr(int nbr);
 t_lista		*do_head(int nbr);
 t_lista		*do_new(t_lista *list, int nbr);
 t_lista		*run_program(int ac, char **av);
 t_lista		*sort(t_lista *head);
+void		duplicate_check(t_lista *list);
 t_lista		*ra(t_lista *list);
 t_lista		*rra(t_lista *list);
+t_lista		*sort(t_lista *list);
+t_lista		*step_one(t_lista *lista);
+t_lista		*step_two(t_lista *lista, t_values *values);
 
 
 void	display_list(t_lista *head)
@@ -62,6 +72,8 @@ void	display_list(t_lista *head)
 		i++;
 	}
 }
+
+
 
 t_lista	 *sa(t_lista *list)
 {
@@ -106,7 +118,6 @@ t_lista		*ra(t_lista *list)
 	{
 		while (tail->next != NULL)
 			tail = tail->next;
-		// tmp = tmp->next;
 		head->next = NULL;
 		tail->next = head;
 		head = tmp;
@@ -141,7 +152,7 @@ t_lista		*rra(t_lista *list)
 	return (head);
 }
 
-t_lista 	*make_structure(void)
+t_lista 	*make_list_structure(void)
 {
 	t_lista *new;
 
@@ -150,11 +161,20 @@ t_lista 	*make_structure(void)
 	return (new);
 }
 
+t_values 	*make_value_structure(void)
+{
+	t_values *new;
+
+	if(!(new = (t_values*)malloc(sizeof(t_values))))
+		return (NULL);
+	return (new);
+}
+
 t_lista		*do_head(int nbr)
 {
 	t_lista *head;
 	
-	head = make_structure();
+	head = make_list_structure();
 	head->nbr = nbr;
 	head->next = NULL;
 	return (head);
@@ -167,7 +187,7 @@ t_lista		*do_new(t_lista *list, int nbr)
 	t_lista	*head;
 
 	head = list;
-	new = make_structure();
+	new = make_list_structure();
 	current = head;
 	while (current->next != NULL)
 		current = current->next;
@@ -200,16 +220,100 @@ void		duplicate_check(t_lista *list)
 	}
 }
 
-// t_lista		*sort_head(t_lista *list)
-// {
-// 	t_lista *a;
-// 	t_lista *b;
+t_lista		*sort(t_lista *list)
+{
+	t_lista *a;
+	t_values *values;
 
-// 	a = list;
-// 	b = NULL;
+	a = list;
+	values = make_value_structure();
+	a = step_one(a);
+	a = step_two(a, values);
+	return (a);
 
-// }
+}
 
+t_lista		*step_one(t_lista *lista)
+{
+	t_lista *head;
+	t_lista *tail;
+	head = lista;
+	tail = head;
+	if (head->next != NULL)
+	{
+		while (tail->next != NULL)
+			tail = tail->next;
+		if (head->nbr > tail->nbr)
+			head = step_one(ra(head));		
+	}
+	return (head);
+}
+
+t_lista		*pb(t_lista *lista, t_lista *listb)
+{
+	t_lista *head;
+	t_lista	*new;
+	t_lista *tmp;
+
+	head = listb;
+	tmp = lista;
+	new = NULL;
+	if (head == NULL)
+	{
+		head->nbr = lista->nbr;
+		head->next = NULL;
+	}
+	else
+	{
+		new->nbr = lista->nbr;
+		new->next = head;
+		head = new;
+	}
+	lista = lista->next;
+	free(tmp);
+	return (head);
+}
+
+t_lista		*step_two(t_lista *lista, t_values *values)
+{
+	t_lista *head;
+	t_lista	*second;
+	t_lista	*tail;
+	t_lista	*b;
+	int		i;
+
+	head = lista;
+	second = head;
+	tail = head;
+	b = make_list_structure();
+	while (tail->next != NULL)
+		tail = tail->next;
+	second = second->next; 
+	i = 1;
+	while (i == 1)
+	{
+		if (head->nbr > second->nbr && head->nbr < tail->nbr)
+			head = sa(head);
+		else if (head->nbr > second->nbr && head->nbr > tail->nbr)
+			head = ra(head);
+		else if (second->nbr > tail->nbr)
+		{
+			if (head->nbr < tail->nbr)
+			{
+				printf("inside if\n");
+				head = pb(head, b);
+				b = pb(head, b);
+				values->midpoint++;
+			}
+			else
+				head = sa(head);
+			head = ra(head);
+		}
+		else
+			i = 0;
+	}
+	return (head);
+}
 
 t_lista	 *run_program(int ac, char **av)
 {
@@ -231,10 +335,9 @@ t_lista	 *run_program(int ac, char **av)
 		i++;
 	}
 	duplicate_check(head);
+	head = sort(head);
 	// run order check to see if in order, else create B
-	// head = sort(head);
 	return (head);
-
 }
 
 void		fill_structure(t_lista *list, int nbr)
