@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:26:54 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/22 10:21:28 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/22 10:24:14 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_lista	 *sa(t_lista *list)
 
 	head = list;
 	current = head;
-	if (head->next == NULL)
+	if (head == NULL || head->next == NULL)
 		ERROR;
 	current = current->next;
 	if (current->next != NULL)
