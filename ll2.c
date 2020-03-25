@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:26:54 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/22 20:09:22 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/23 12:24:16 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_lista		*ra(t_lista *list);
 t_lista		*rra(t_lista *list);
 t_lista		*sort(t_lista *list);
 t_lista		*step_one(t_lista *lista);
-t_lista		*step_two(t_lista *lista, t_values *values);
+t_lista		*step_two(t_lista *lista);//, t_values *values);
 
 
 void	display_list(t_lista *head)
@@ -223,12 +223,12 @@ void		duplicate_check(t_lista *list)
 t_lista		*sort(t_lista *list)
 {
 	t_lista *a;
-	t_values *values;
+	// t_values *values;
 
 	a = list;
-	values = make_value_structure();
+	// values = make_value_structure();
 	a = step_one(a);
-	a = step_two(a, values);
+	a = step_two(a);
 	return (a);
 
 }
@@ -249,71 +249,105 @@ t_lista		*step_one(t_lista *lista)
 	return (head);
 }
 
-t_lista		*pb(t_lista *lista, t_lista *listb)
+t_lista		*pb(t_lista *listb, int nbr)
 {
 	t_lista *head;
-	t_lista	*new;
 	t_lista *tmp;
+	// t_lista	*new;
+	
 
 	head = listb;
-	tmp = lista;
-	new = NULL;
+	tmp = head;
 	if (head == NULL)
 	{
-		head->nbr = lista->nbr;
+		head->nbr = nbr;
 		head->next = NULL;
 	}
 	else
 	{
-		new->nbr = lista->nbr;
-		new->next = head;
-		head = new;
+		tmp->nbr = nbr;
+		tmp->next = head;
+		head->next = NULL;
+		head = tmp;
 	}
-	lista = lista->next;
+	// lista = lista->next;
+	// free(tmp);
+	return (head);
+}
+
+t_lista	 *delete_node(t_lista *list)
+{
+	t_lista *tmp;
+	t_lista *head;
+
+	head = list;
+	tmp = head;
+	tmp = tmp->next;
+	head = tmp;
 	free(tmp);
 	return (head);
 }
 
-t_lista		*step_two(t_lista *lista, t_values *values)
+t_lista		*step_two(t_lista *lista)//, t_values *values)
 {
-	t_lista *head;
-	t_lista	*second;
-	t_lista	*tail;
-	t_lista	*b;
+	t_lista *head_a;
+	t_lista	*second_a;
+	t_lista	*tail_a;
+	t_lista	*head_b;
 	int		i;
 
-	head = lista;
-	second = head;
-	tail = head;
-	b = make_list_structure();
-	while (tail->next != NULL)
-		tail = tail->next;
-	second = second->next; 
+	head_a = lista;
+	second_a = head_a;
+	tail_a = head_a;
+	head_b = make_list_structure();
+	while (tail_a->next != NULL)
+		tail_a = tail_a->next;
+	second_a = second_a->next; 
 	i = 1;
-	while (i == 1)
+	printf("sorting\n");
+	while (i < 2)
 	{
-		if (head->nbr > second->nbr && head->nbr < tail->nbr)
-			head = sa(head);
-		else if (head->nbr > second->nbr && head->nbr > tail->nbr)
-			head = ra(head);
-		else if (second->nbr > tail->nbr)
+		// printf("i:%d\n", i);
+		if (head_a->nbr > second_a->nbr && head_a->nbr < tail_a->nbr)
 		{
-			if (head->nbr < tail->nbr)
+			printf("first if\n");
+			head_a = sa(head_a);
+		}
+		else if (head_a->nbr > second_a->nbr && head_a->nbr > tail_a->nbr)
+		{
+			printf("2nd if\n");
+			head_a = ra(head_a);
+		}
+		else if (second_a->nbr > tail_a->nbr && second_a->next != NULL)
+		{
+			// printf("3rd if\n");
+			if (head_a->nbr < tail_a->nbr)
 			{
 				// SEG Faulting here. need to start working with 2 lists.
-				printf("inside if\n");
-				head = pb(head, b);
-				b = pb(head, b);
-				values->midpoint++;
+				printf("4th if\n");
+				// printf("head_a->nbr:%d\n", head_a->nbr);
+				head_b = pb(head_b, head_a->nbr);
+				// display_list(head_b);
+				head_a = delete_node(head_a);
+				printf("lista\n");
+				display_list(head_a);
+				printf("listb\n");
+				// display_list(head_b);
+				// printf("last statement\n");
+				// values->midpoint++;
 			}
 			else
-				head = sa(head);
-			head = ra(head);
+				head_a = sa(head_a);
+			head_a = ra(head_a);
 		}
 		else
-			i = 0;
+		{
+			printf("hit else\n");
+			i++;
+		}
 	}
-	return (head);
+	free(head_b);
+	return (head_a);
 }
 
 t_lista	 *run_program(int ac, char **av)
@@ -336,7 +370,8 @@ t_lista	 *run_program(int ac, char **av)
 		i++;
 	}
 	duplicate_check(head);
-	head = sort(head);
+	if (i > 1)
+		head = sort(head);
 	// run order check to see if in order, else create B
 	return (head);
 }
@@ -361,9 +396,9 @@ int	main(int ac, char **av)
 	else
 		ERROR;
 	display_list(head);
-	// while (1)
-	// {
+	while (1)
+	{
 		
-	// }
+	}
 	return (0);
 }
