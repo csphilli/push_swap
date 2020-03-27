@@ -6,14 +6,14 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 18:26:54 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/23 12:24:16 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/26 10:20:22 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #define ERROR error()
-// #include "../libft/header/libft.h" // I'm using my own library for ft_atoi but atoi will suffice.
+#include "../libft/header/libft.h" // I'm using my own library for ft_atoi but atoi will suffice.
 
 
 
@@ -156,8 +156,7 @@ t_lista 	*make_list_structure(void)
 {
 	t_lista *new;
 
-	if(!(new = (t_lista*)malloc(sizeof(t_lista))))
-		return (NULL);
+	new = (t_lista*)ft_memalloc(sizeof(t_lista));
 	return (new);
 }
 
@@ -165,8 +164,7 @@ t_values 	*make_value_structure(void)
 {
 	t_values *new;
 
-	if(!(new = (t_values*)malloc(sizeof(t_values))))
-		return (NULL);
+	new = (t_values*)ft_memalloc(sizeof(t_values));
 	return (new);
 }
 
@@ -229,6 +227,8 @@ t_lista		*sort(t_lista *list)
 	// values = make_value_structure();
 	a = step_one(a);
 	a = step_two(a);
+	printf("printing list before exit sorting\n");
+	display_list(a);
 	return (a);
 
 }
@@ -307,7 +307,10 @@ t_lista		*step_two(t_lista *lista)//, t_values *values)
 	printf("sorting\n");
 	while (i < 2)
 	{
-		// printf("i:%d\n", i);
+		printf("BEGIN SORTING. LIST A\n");
+		display_list(head_a);
+		printf("BEGIN SORTING. LIST B\n");
+		display_list(head_b);
 		if (head_a->nbr > second_a->nbr && head_a->nbr < tail_a->nbr)
 		{
 			printf("first if\n");
@@ -329,15 +332,19 @@ t_lista		*step_two(t_lista *lista)//, t_values *values)
 				head_b = pb(head_b, head_a->nbr);
 				// display_list(head_b);
 				head_a = delete_node(head_a);
-				printf("lista\n");
+				printf("PRINTING LIST A\n");
 				display_list(head_a);
-				printf("listb\n");
-				// display_list(head_b);
+				printf("PRINTING LIST B\n");
+				display_list(head_b);
 				// printf("last statement\n");
 				// values->midpoint++;
 			}
 			else
+			{
+				printf("4th IF ELSE WITH SA\n");
 				head_a = sa(head_a);
+			}
+			printf("ROTATING HEAD_A\n");
 			head_a = ra(head_a);
 		}
 		else
@@ -346,6 +353,9 @@ t_lista		*step_two(t_lista *lista)//, t_values *values)
 			i++;
 		}
 	}
+	printf("printing lists before exiting step two\n");
+	display_list(head_a);
+	display_list(head_b);
 	free(head_b);
 	return (head_a);
 }
@@ -372,6 +382,10 @@ t_lista	 *run_program(int ac, char **av)
 	duplicate_check(head);
 	if (i > 1)
 		head = sort(head);
+	printf("exiting run program function\n");
+	printf("printing another list inside run program\n");
+	display_list(head);
+	printf("done printing that list\n");
 	// run order check to see if in order, else create B
 	return (head);
 }
