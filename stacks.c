@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "../libft/header/libft.h"
 #define ERROR error()
 
@@ -20,12 +21,15 @@ typedef struct s_stacks
 {
 	t_lists *head_a;
 	t_lists	*head_b;
+	int		midpoint;
+	int		list_len;
+	int		nbr_moves;
 }				t_stacks;
 
 t_stacks	*create_stacks(void);
 t_lists		*create_new_node(int nbr);
 t_stacks	*initialize_stacks(t_stacks *stack);
-void		display_stack_a(t_stacks *stack);
+void		display_list(t_lists *list);
 void		insert_node(t_stacks *stacks, int nbr);
 void		check_for_duplicates(t_stacks *stacks);
 
@@ -53,43 +57,29 @@ t_stacks	*initialize_stacks(t_stacks *stack)
 {
 	stack->head_a = NULL;
 	stack->head_b = NULL;
+	stack->midpoint = 0;
 	return (stack);
 }
 
-void		display_stack_a(t_stacks *stack)
+void		display_list(t_lists *list)
 {
 	int i;
 
 	i = 1;
 	t_lists *tmp;
-	tmp = stack->head_a;
+	tmp = list;
 	if (tmp)
 	{
 		while (tmp != NULL)
 		{
-			printf("address:%p | list[%d]:%d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
+			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
+			// printf("seg fault here?\n");
 			tmp = tmp->next;
+			// printf("or here?\n");
 			i++;
 		}
 	}
 }
-
-// void		insert_at_head(t_stacks *stacks, t_lists *node)
-// {
-// 	if (stacks && node)
-// 		if (!stacks->head_a)
-// 			stacks->head_a = node;
-// }
-
-// void		insert_at_tail(t_stacks *stacks, t_lists *node)
-// {
-// 	t_lists *tmp;
-
-// 	tmp = stacks->head_a;
-// 	while (tmp->next != NULL)
-// 		tmp = tmp->next;
-// 	tmp->next = node;
-// }
 
 void		insert_node(t_stacks *stacks, int nbr)
 {
@@ -134,7 +124,254 @@ void	check_for_duplicates(t_stacks *stacks)
 	}
 }
 
-void	run_program(t_stacks *stacks, int ac, char **av)
+t_lists		*rotate_list(t_lists *list) // this needs to be part of checker
+{
+	t_lists *tmp;
+	t_lists *head;
+	t_lists *tail;
+
+	tmp = list;
+	head = tmp;
+	tail = tmp;
+	// printf("ROTATE LIST - LIST START\n");
+	// display_list(head);
+	if (tmp == NULL || tmp->next == NULL)
+		ERROR;
+	while (tail->next != NULL)
+		tail = tail->next;
+	tail->next = tmp;
+	head = head->next;
+	tmp->next = NULL;
+	return (head);
+}
+
+t_lists		*swap_list(t_lists *list)
+{
+	// printf("SWAP LIST - LIST START\n");
+	t_lists *head;
+	t_lists *second;
+
+	head = list;
+	second = head;
+	// display_list(head);
+	if (second->next != NULL)
+	{
+		second = second->next;
+		if (second->next != NULL)
+		{
+			head->next = second->next;
+			second->next = head;
+			head = second;
+		}
+		else
+		{
+			second->next = head;
+			head->next = NULL;
+			head = second;
+		}		
+	}
+	// printf("SWAP LIST - LIST END\n");
+	// display_list(head);
+	return (head);	
+}
+
+t_lists		*first_step(t_lists *list_a)
+{
+	t_lists *head_a;
+	t_lists	*tail_a;
+	
+	head_a = list_a;
+	tail_a = head_a;
+	if (head_a->next != NULL)
+	{
+		while (tail_a->next != NULL)
+			tail_a = tail_a->next;
+		if (head_a->nbr > tail_a->nbr)
+		{
+			// display_list(head_a);
+			head_a = first_step(rotate_list(head_a));
+			// Each time i execute this step, i must output "ra" for GNL to pick up.
+			// printf("\n");
+		}
+	}
+	return (head_a);
+}
+
+t_lists		*list_pop(t_lists *list)
+{
+	// printf("POP LIST - LIST START\n");
+	
+	t_lists *tmp;
+	t_lists *head;
+
+	head = list;
+	tmp = head;
+	// display_list(head);
+	head = tmp->next;
+	tmp->nbr = '\0';
+	tmp->next = NULL;
+	free(tmp);
+	// printf("POP LIST - AFTER POP\n");
+	// display_list(head);
+	return (head);
+}
+
+t_lists		*list_push(int nbr, t_lists *list)
+{
+	// printf("PUSH LIST - LIST START\n");	
+	// printf("nbr sent:%d\n", nbr);
+	t_lists	*head;
+	t_lists *tmp;
+	t_lists	*node;
+
+	head = list;
+	tmp = head;
+	display_list(head);
+	node = create_new_node(nbr);
+	if (!list)
+		head = node;
+	else
+	{
+		node->next = head;
+		head = node;
+	}
+	// printf("PUSH LIST - LIST AFTER PUSH\n");
+	// display_list(head);
+	return (head);
+}
+
+t_stacks	*pb(t_stacks *stacks)
+{
+	// printf("PUSH B - LISTS START\n");
+	
+	t_stacks 	*tmp;
+	t_lists		*head_a;
+	t_lists		*head_b;
+
+	tmp = stacks;
+	head_a = tmp->head_a;
+	head_b = tmp->head_b;
+	// printf("HEAD_A\n");
+	// display_list(head_a);
+	// printf("HEAD_B\n");
+	// display_list(head_b);
+	tmp->head_b = list_push(head_a->nbr, head_b);
+	tmp->head_a = list_pop(head_a);
+	// printf("LISTS AFTER PB FINISHES\n");
+	// display_list(tmp->head_a);
+	// display_list(tmp->head_b);
+	return (tmp);
+	// pop removes the top element of the list.
+	// push adds an element to the top of the stack.
+
+}
+
+t_stacks	*longer_second_step(t_stacks *stacks)
+{
+	t_stacks *tmp;
+	t_lists	*head_a;
+	t_lists	*tail_a;
+
+	tmp = stacks;
+	head_a = tmp->head_a;
+	tail_a = tmp->head_a;
+	while (tail_a->next != NULL)
+		tail_a = tail_a->next;
+	if (head_a->nbr < tail_a->nbr)
+	{
+		tmp = pb(tmp);
+		// printf("VERIFYING LISTS AFTER RETURN FROM PB\n");
+		// display_list(tmp->head_a);
+		// display_list(tmp->head_b);
+		tmp->midpoint++;
+		// printf("MIDPOINT VALUE:%d\n", tmp->midpoint);
+	}
+	else
+		tmp->head_a = swap_list(tmp->head_a);
+	tmp->head_a = rotate_list(tmp->head_a);
+	// printf("LISTS AFTER LONGER SECOND STEP\n");
+	// display_list(tmp->head_a);
+	// printf("\n");
+	// display_list(tmp->head_b);
+	return (tmp);
+}
+
+t_stacks	*second_step(t_stacks *stacks)
+{
+	bool check;
+	t_stacks *tmp;
+	t_lists	*head_a;
+	t_lists	*tail_a;
+	int i;
+
+	i = 1;
+	tmp = stacks;
+	head_a = tmp->head_a;
+	tail_a = tmp->head_a;
+	check = true;
+	while (check)
+	{
+
+		// printf("SECOND STEP START - ROUND %d\n", i);
+		// printf("LIST A START\n");
+		// display_list(tmp->head_a);
+		// printf("LIST B START\n");
+		// display_list(tmp->head_b);
+		// printf("seg fault thrice\n");
+		i++;
+		tail_a = tmp->head_a;
+		head_a = tmp->head_a;
+		// printf("seg fault fourth\n");
+		while (tail_a->next != NULL)
+			tail_a = tail_a->next;
+		// printf("tail_a->nbr:%d\n", tail_a->nbr);
+		// printf("head_a->nbr:%d | ", head_a->nbr);
+		// printf("head_a->next->nbr:%d | ", head_a->next->nbr);
+		// printf("tail_a->nbr:%d\n", tail_a->nbr);
+		if (head_a->nbr > head_a->next->nbr && head_a->nbr < tail_a->nbr)
+		{
+			// printf("FIRST IF - SWAP A - START LIST\n");
+			// display_list(tmp->head_a);
+			tmp->head_a = swap_list(tmp->head_a);
+			// printf("FIRST IF - SWAP A - RESULT\n");
+			// display_list(tmp->head_a);
+			// tmp->head_a = swap_list(tmp->head_a);
+		}
+		else if (head_a->nbr > head_a->next->nbr && head_a->nbr > tail_a->nbr)
+		{
+			// printf("SECOND IF - ROTATE A\n");
+			tmp->head_a = rotate_list(tmp->head_a);
+			// printf("SECOND IF - ROTATE A - RESULT\n");
+			// display_list(tmp->head_a);
+			// tmp->head_a = rotate_list(tmp->head_a);
+		}
+		else if (head_a->next->nbr > tail_a->nbr && head_a->next != NULL)
+		{
+			// printf("SENT TO LONG SECOND STEP\n");
+			tmp = longer_second_step(tmp);
+			// printf("VERIFYING LISTS RETURNED TO LONG 2nd STEP\n");
+			// display_list(tmp->head_a);
+			// display_list(tmp->head_b);
+
+		}
+		else
+		{
+			// printf("CHANGING TO FALSE\n");
+			check = false;
+		}
+	}
+	return (tmp);
+}
+
+void	begin_sort(t_stacks *stacks)
+{
+	// printf("1st STEP\n");
+	stacks->head_a = first_step(stacks->head_a); // sorting correctly.
+	// printf("2nd STEP\n");
+	stacks = second_step(stacks); // sorting correctly!
+}
+
+t_stacks	*run_program(t_stacks *stacks, int ac, char **av)
 {
 	int			nbr;
 	int			i;
@@ -147,7 +384,13 @@ void	run_program(t_stacks *stacks, int ac, char **av)
 		i++;
 	}
 	check_for_duplicates(stacks);
-	display_stack_a(stacks);
+	begin_sort(stacks);
+	// printf("PRINTING STACKS IN RUN PROGRAM\n");
+	// printf("LIST A\n");
+	// display_list(stacks->head_a);
+	// printf("LIST B\n");
+	// display_list(stacks->head_b);
+	return (stacks);
 }
 
 int	main(int ac, char **av)
@@ -155,10 +398,13 @@ int	main(int ac, char **av)
 	t_stacks	*stacks;
 	stacks = create_stacks();
 	if (ac > 1)
-		run_program(stacks, ac, av);
+		stacks = run_program(stacks, ac, av);
 	else
 		ERROR;
-
+	printf("LIST A\n");
+	display_list(stacks->head_a);
+	printf("LIST B\n");
+	display_list(stacks->head_b);
 	while (1)
 	{
 
@@ -166,150 +412,3 @@ int	main(int ac, char **av)
 
 	return (0);
 }
-
-/*
-
-#include <stdio.h>
-#include <stdlib.h>
-
-
-
-typedef struct s_lists
-{
-    int        nbr;
-    struct s_lists *next;
-}                t_lists;
-
-typedef struct s_stacks
-{
-    t_lists *head_a;
-    t_lists    *head_b;
-}                t_stacks;
-void    *ft_memset(void *b, int c, size_t len)
-{
-    unsigned char *ptr;
-
-    ptr = (unsigned char*)b;
-    while (len-- > 0)
-        *(ptr++) = (unsigned char)c;
-    return (b);
-}
-
-
-void    ft_bzero(void *s, size_t n)
-{
-    ft_memset(s, 0, n);
-}
-
-void    *ft_memalloc(size_t size)
-{
-    void    *mem;
-
-    if (!(mem = malloc(size)))
-        return (NULL);
-    ft_bzero(mem, size);
-    return (mem);
-}
-
-t_stacks    *create_new_stack(void)
-{
-    t_stacks *new;
-
-    new = (t_stacks*)ft_memalloc(sizeof(t_stacks));
-    return (new);
-}
-
-t_lists        *create_new_node(int nbr)
-{
-    t_lists *new;
-
-    new = (t_lists*)ft_memalloc(sizeof(t_lists));
-    new->nbr = nbr;
-    new->next = NULL;
-    return (new);
-}
-
-
-t_stacks    *initialize_stacks(t_stacks *stack)
-{
-    stack->head_a = NULL;
-    stack->head_b = NULL;
-
-    return (stack);
-}
-
-void        display_stack_a(t_stacks *stack)
-{
-    int i;
-
-    i = 1;
-    if (stack->head_a)
-    {
-        while (stack->head_a != NULL)
-        {
-            printf("list[%d]:%d\n", i, stack->head_a->nbr);
-            stack->head_a = stack->head_a->next;
-            i++;
-        }
-    }
-}
-
-t_stacks        *insert_at_head(t_stacks *stacks, t_lists *node)
-{
-    
-    if (stacks && node)
-    {
-        if (!stacks->head_a)
-        {
-            printf("!stack->head_a\n");
-            
-            stacks->head_a = node;
-            // printf("stack->head_a->nbr:%d\n", stacks->head_a->nbr);
-            // printf("stack->head->address:%p\n", stacks->head_a);
-            // printf("stack->next->address:%p\n", stacks->head_a->next);
-            // printf("stack->head_a->address:%p\n", stacks->head_a);
-        }
-    }
-    return (stacks);
-}
-
-t_stacks        *insert_at_tail(t_stacks *stacks, int nbr)
-{
-    // printf("node->nbr:%d\tnode->next:%p\n", node->nbr, node->next);
-    // printf("stacks->head:%p\n", stacks->head_a);
-    // printf("stacks->head:%p\n", stacks->head_a);
-    t_lists *node;
-    t_lists *tmp;
-    
-    tmp = stacks->head_a;
-    node = create_new_node(nbr);
-
-    while (tmp->next != NULL)
-        tmp = tmp->next;
-    tmp->next = node;
-    // stacks = tmp;
-    return (stacks);    
-}
-
-int    main(void)
-{
-    int nbr1 = 1;
-    int nbr2 = 2;
-    int nbr3 = 3;
-    t_stacks *stacks;
-    t_lists *node;
-
-    node = create_new_node(nbr1);
-
-    stacks = create_new_stack();
-    stacks = insert_at_head(stacks, node);
-    // node = create_new_node(nbr2);
-    insert_at_tail(stacks, nbr2);
-    display_stack_a(stacks);
-    // printf("head_a->nbr:%d\t| next: %p\n", stacks->head_a->nbr, stacks->head_a->next);
-    
-
-
-    return (0);
-}
-*/
