@@ -22,7 +22,8 @@ typedef struct s_stacks
 	t_lists *head_a;
 	t_lists	*head_b;
 	int		midpoint;
-	int		list_len;
+	int		list_len_a;
+	int		list_len_b;
 	int		nbr_moves;
 }				t_stacks;
 
@@ -58,6 +59,9 @@ t_stacks	*initialize_stacks(t_stacks *stack)
 	stack->head_a = NULL;
 	stack->head_b = NULL;
 	stack->midpoint = 0;
+	stack->list_len_a = 0;
+	stack->list_len_b = 0;
+	stack->nbr_moves = 0;
 	return (stack);
 }
 
@@ -98,6 +102,7 @@ void		insert_node(t_stacks *stacks, int nbr)
 				tmp = tmp->next;
 			tmp->next = node;
 		}
+		stacks->list_len_a++;
 	}
 }
 
@@ -124,7 +129,7 @@ void	check_for_duplicates(t_stacks *stacks)
 	}
 }
 
-t_lists		*rotate_list(t_lists *list) // this needs to be part of checker
+t_lists		*rotate_list(t_stacks *stacks, t_lists *list) // this needs to be part of checker
 {
 	t_lists *tmp;
 	t_lists *head;
@@ -135,13 +140,15 @@ t_lists		*rotate_list(t_lists *list) // this needs to be part of checker
 	tail = tmp;
 	// printf("ROTATE LIST - LIST START\n");
 	// display_list(head);
-	if (tmp == NULL || tmp->next == NULL)
-		ERROR;
-	while (tail->next != NULL)
-		tail = tail->next;
-	tail->next = tmp;
-	head = head->next;
-	tmp->next = NULL;
+	if (tmp != NULL || tmp->next != NULL)
+	{
+		while (tail->next != NULL)
+			tail = tail->next;
+		tail->next = tmp;
+		head = head->next;
+		tmp->next = NULL;
+		stacks->nbr_moves++;
+	}
 	return (head);
 }
 
@@ -175,7 +182,7 @@ t_lists		*swap_list(t_lists *list)
 	return (head);	
 }
 
-t_lists		*first_step(t_lists *list_a)
+t_lists		*first_step(t_stacks *stacks, t_lists *list_a)
 {
 	t_lists *head_a;
 	t_lists	*tail_a;
@@ -189,7 +196,7 @@ t_lists		*first_step(t_lists *list_a)
 		if (head_a->nbr > tail_a->nbr)
 		{
 			// display_list(head_a);
-			head_a = first_step(rotate_list(head_a));
+			head_a = first_step(stacks, rotate_list(stacks, head_a));
 			// Each time i execute this step, i must output "ra" for GNL to pick up.
 			// printf("\n");
 		}
@@ -257,6 +264,8 @@ t_stacks	*pb(t_stacks *stacks)
 	// display_list(head_b);
 	tmp->head_b = list_push(head_a->nbr, head_b);
 	tmp->head_a = list_pop(head_a);
+	tmp->list_len_a--;
+	tmp->list_len_b++;
 	// printf("LISTS AFTER PB FINISHES\n");
 	// display_list(tmp->head_a);
 	// display_list(tmp->head_b);
@@ -288,7 +297,7 @@ t_stacks	*longer_second_step(t_stacks *stacks)
 	}
 	else
 		tmp->head_a = swap_list(tmp->head_a);
-	tmp->head_a = rotate_list(tmp->head_a);
+	tmp->head_a = rotate_list(tmp, tmp->head_a);
 	// printf("LISTS AFTER LONGER SECOND STEP\n");
 	// display_list(tmp->head_a);
 	// printf("\n");
@@ -340,7 +349,7 @@ t_stacks	*second_step(t_stacks *stacks)
 		else if (head_a->nbr > head_a->next->nbr && head_a->nbr > tail_a->nbr)
 		{
 			// printf("SECOND IF - ROTATE A\n");
-			tmp->head_a = rotate_list(tmp->head_a);
+			tmp->head_a = rotate_list(tmp, tmp->head_a);
 			// printf("SECOND IF - ROTATE A - RESULT\n");
 			// display_list(tmp->head_a);
 			// tmp->head_a = rotate_list(tmp->head_a);
@@ -366,7 +375,7 @@ t_stacks	*second_step(t_stacks *stacks)
 void	begin_sort(t_stacks *stacks)
 {
 	// printf("1st STEP\n");
-	stacks->head_a = first_step(stacks->head_a); // sorting correctly.
+	stacks->head_a = first_step(stacks, stacks->head_a); // sorting correctly.
 	// printf("2nd STEP\n");
 	stacks = second_step(stacks); // sorting correctly!
 }
@@ -402,9 +411,11 @@ int	main(int ac, char **av)
 	else
 		ERROR;
 	printf("LIST A\n");
-	display_list(stacks->head_a);
-	printf("LIST B\n");
+	display_list(stacks->head_a);	
+	printf("LIST B\n");	
 	display_list(stacks->head_b);
+	printf("STATS: A_LEN:%2d | B_LEN:%2d | NBR MOVES:%3d\n", stacks->list_len_a,\
+		stacks->list_len_b, stacks->nbr_moves);
 	while (1)
 	{
 
