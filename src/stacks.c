@@ -1,38 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "../libft/header/libft.h"
+#include "../includes/push_swap.h"
 #define ERROR error()
 
-void	error(void)
-{
-	write(2, "Error\n", 6);
-	exit(-1);
-}
+// void	error(void)
+// {
+// 	write(2, "Error\n", 6);
+// 	exit(-1);
+// }
 
 
-typedef struct s_lists
-{
-	int		nbr;
-	struct s_lists *next;
-}				t_lists;
+// typedef struct s_lists
+// {
+// 	int		nbr;
+// 	struct s_lists *next;
+// }				t_lists;
 
-typedef struct s_stacks
-{
-	t_lists *head_a;
-	t_lists	*head_b;
-	int		midpoint;
-	int		list_len_a;
-	int		list_len_b;
-	int		nbr_moves;
-}				t_stacks;
+// typedef struct s_stacks
+// {
+// 	t_lists *head_a;
+// 	t_lists	*head_b;
+// 	int		midpoint;
+// 	int		list_len_start;
+// 	int		nbr_moves;
+// }				t_stacks;
 
-t_stacks	*create_stacks(void);
-t_lists		*create_new_node(int nbr);
-t_stacks	*initialize_stacks(t_stacks *stack);
-void		display_list(t_lists *list);
-void		insert_node(t_stacks *stacks, int nbr);
-void		check_for_duplicates(t_stacks *stacks);
+// t_stacks	*create_stacks(void);
+// t_lists		*create_new_node(int nbr);
+// t_stacks	*initialize_stacks(t_stacks *stack);
+// void		display_list(t_lists *list);
+// void		insert_node(t_stacks *stacks, int nbr);
+// void		check_for_duplicates(t_stacks *stacks);
 
 t_stacks	*create_stacks(void)
 {
@@ -59,31 +58,30 @@ t_stacks	*initialize_stacks(t_stacks *stack)
 	stack->head_a = NULL;
 	stack->head_b = NULL;
 	stack->midpoint = 0;
-	stack->list_len_a = 0;
-	stack->list_len_b = 0;
+	stack->list_len_start = 0;
 	stack->nbr_moves = 0;
 	return (stack);
 }
 
-void		display_list(t_lists *list)
-{
-	int i;
+// void		display_list(t_lists *list)
+// {
+// 	int i;
 
-	i = 1;
-	t_lists *tmp;
-	tmp = list;
-	if (tmp)
-	{
-		while (tmp != NULL)
-		{
-			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
-			// printf("seg fault here?\n");
-			tmp = tmp->next;
-			// printf("or here?\n");
-			i++;
-		}
-	}
-}
+// 	i = 1;
+// 	t_lists *tmp;
+// 	tmp = list;
+// 	if (tmp)
+// 	{
+// 		while (tmp != NULL)
+// 		{
+// 			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
+// 			// printf("seg fault here?\n");
+// 			tmp = tmp->next;
+// 			// printf("or here?\n");
+// 			i++;
+// 		}
+// 	}
+// }
 
 void		insert_node(t_stacks *stacks, int nbr)
 {
@@ -102,7 +100,7 @@ void		insert_node(t_stacks *stacks, int nbr)
 				tmp = tmp->next;
 			tmp->next = node;
 		}
-		stacks->list_len_a++;
+		stacks->list_len_start++;
 	}
 }
 
@@ -264,8 +262,6 @@ t_stacks	*pb(t_stacks *stacks)
 	// display_list(head_b);
 	tmp->head_b = list_push(head_a->nbr, head_b);
 	tmp->head_a = list_pop(head_a);
-	tmp->list_len_a--;
-	tmp->list_len_b++;
 	// printf("LISTS AFTER PB FINISHES\n");
 	// display_list(tmp->head_a);
 	// display_list(tmp->head_b);
@@ -414,8 +410,8 @@ int	main(int ac, char **av)
 	display_list(stacks->head_a);	
 	printf("LIST B\n");	
 	display_list(stacks->head_b);
-	printf("STATS: A_LEN:%2d | B_LEN:%2d | NBR MOVES:%3d\n", stacks->list_len_a,\
-		stacks->list_len_b, stacks->nbr_moves);
+	printf("STATS: LIST_LEN_START:%2d | NBR MOVES:%3d\n", stacks->list_len_start,\
+		stacks->nbr_moves);
 	while (1)
 	{
 
