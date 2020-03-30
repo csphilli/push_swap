@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_list.c                                     :+:      :+:    :+:   */
+/*   run_program.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 10:34:16 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/30 13:09:26 by csphilli         ###   ########.fr       */
+/*   Created: 2020/03/30 18:53:05 by csphilli          #+#    #+#             */
+/*   Updated: 2020/03/30 18:54:35 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void		display_list(t_lists *list)
+t_stacks	*run_program(t_stacks *stacks, int ac, char **av)
 {
-	int i;
+	int			nbr;
+	int			i;
 
 	i = 1;
-	t_lists *tmp;
-	tmp = list;
-	if (tmp)
+	while (ac-- > 1)
 	{
-		while (tmp != NULL)
-		{
-			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
-			// printf("seg fault here?\n");
-			tmp = tmp->next;
-			// printf("or here?\n");
-			i++;
-		}
+		nbr = ft_atoi(av[i]);
+		insert_node(stacks, nbr);
+		i++;
 	}
+	check_for_duplicates(stacks);
+	begin_sort(stacks);
+	// printf("PRINTING STACKS IN RUN PROGRAM\n");
+	// printf("LIST A\n");
+	// display_list(stacks->head_a);
+	// printf("LIST B\n");
+	// display_list(stacks->head_b);
+	return (stacks);
 }

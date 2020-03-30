@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_list.c                                     :+:      :+:    :+:   */
+/*   ft_nbr_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 10:34:16 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/30 13:09:26 by csphilli         ###   ########.fr       */
+/*   Created: 2019/10/29 14:27:34 by cphillip          #+#    #+#             */
+/*   Updated: 2020/03/06 21:44:34 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "./header/libft.h"
 
-void		display_list(t_lists *list)
+int		ft_nbr_size(intmax_t nbr)
 {
-	int i;
+	int len;
 
-	i = 1;
-	t_lists *tmp;
-	tmp = list;
-	if (tmp)
-	{
-		while (tmp != NULL)
-		{
-			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
-			// printf("seg fault here?\n");
-			tmp = tmp->next;
-			// printf("or here?\n");
-			i++;
-		}
-	}
+	if (nbr < 0)
+		nbr *= -1;
+	len = 1;
+	while ((nbr /= 10) > 0)
+		len++;
+	return (len);
 }

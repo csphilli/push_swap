@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_list.c                                     :+:      :+:    :+:   */
+/*   ft_s_toupper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 10:34:16 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/30 13:09:26 by csphilli         ###   ########.fr       */
+/*   Created: 2020/01/31 13:39:37 by cphillip          #+#    #+#             */
+/*   Updated: 2020/03/07 08:53:24 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "header/libft.h"
 
-void		display_list(t_lists *list)
+void	ft_s_toupper(char *str)
 {
-	int i;
+	int		i;
 
-	i = 1;
-	t_lists *tmp;
-	tmp = list;
-	if (tmp)
+	i = 0;
+	while (str[i])
 	{
-		while (tmp != NULL)
-		{
-			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
-			// printf("seg fault here?\n");
-			tmp = tmp->next;
-			// printf("or here?\n");
-			i++;
-		}
+		if (!ft_isalpha(str[i]))
+			ft_putchar(str[i]);
+		else if (ft_isalpha(str[i]))
+			ft_putchar(ft_toupper(str[i]));
+		i++;
 	}
 }

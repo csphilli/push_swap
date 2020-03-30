@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_list.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 10:34:16 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/30 13:09:26 by csphilli         ###   ########.fr       */
+/*   Created: 2020/03/03 11:40:26 by cphillip          #+#    #+#             */
+/*   Updated: 2020/03/07 09:36:12 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "./header/libft.h"
 
-void		display_list(t_lists *list)
+char	*ft_itoa_base(uintmax_t nbr, int base)
 {
-	int i;
-
-	i = 1;
-	t_lists *tmp;
-	tmp = list;
-	if (tmp)
+	char	*new;
+	int		j;
+	j = ft_nbr_size_base(nbr, base);
+	if (!(new = (char*)malloc(sizeof(char) * j + 1)))
+		return (NULL);
+	if (nbr < 0)
+		new[0] = '-';
+	new[j] = '\0';
+	while (j--)
 	{
-		while (tmp != NULL)
-		{
-			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
-			// printf("seg fault here?\n");
-			tmp = tmp->next;
-			// printf("or here?\n");
-			i++;
-		}
+		new[j] = (nbr % base < 10) ? nbr % base + '0' : nbr % base + 'a' - 10;
+		nbr /= base;
 	}
+	return (new);
 }

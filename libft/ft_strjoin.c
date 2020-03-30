@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_list.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 10:34:16 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/30 13:09:26 by csphilli         ###   ########.fr       */
+/*   Created: 2019/10/28 12:25:51 by cphillip          #+#    #+#             */
+/*   Updated: 2020/03/06 23:55:30 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "./header/libft.h"
 
-void		display_list(t_lists *list)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int i;
+	char	*new;
+	int		i;
+	int		j;
 
-	i = 1;
-	t_lists *tmp;
-	tmp = list;
-	if (tmp)
-	{
-		while (tmp != NULL)
-		{
-			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
-			// printf("seg fault here?\n");
-			tmp = tmp->next;
-			// printf("or here?\n");
-			i++;
-		}
-	}
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	if (!(new = (char*)malloc(sizeof(char) *(ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (NULL);
+	while (s1[i])
+		new[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		new[j++] = s2[i++];
+	new[j++] = '\0';
+	return (new);
 }
