@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_node.c                                      :+:      :+:    :+:   */
+/*   pa_pb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 18:51:47 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/30 18:52:15 by csphilli         ###   ########.fr       */
+/*   Created: 2020/03/30 18:50:28 by csphilli          #+#    #+#             */
+/*   Updated: 2020/03/31 12:39:15 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void		insert_node(t_stacks *stacks, int nbr)
+void	pb(t_stacks *stacks)
 {
-	t_lists *tmp;
-	t_lists *node;
+	unshift_b(stacks, stacks->head_a->nbr);
+	pop_a(stacks);
+}
 
-	node = create_new_node(nbr);
-	tmp = stacks->head_a;
-	if (stacks && node)
-	{
-		if (!stacks->head_a)
-			stacks->head_a = node;
-		else
-		{
-			while (tmp->next != NULL)
-				tmp = tmp->next;
-			tmp->next = node;
-		}
-		stacks->list_len_start++;
-	}
+void	pa(t_stacks *stacks)
+{
+	unshift_a(stacks, stacks->head_b->nbr);
+	pop_b(stacks);
 }

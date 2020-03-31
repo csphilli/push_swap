@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/03/30 18:56:20 by csphilli         ###   ########.fr        #
+#    Updated: 2020/03/31 12:46:25 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,14 +34,13 @@ SRC_FILES = display_list.c\
 			create.c\
 			check_for_duplicates.c\
 			error.c\
-			push_pop.c\
+			push_pop_unshift.c\
 			sort_parse.c\
 			first_step.c\
 			second_step.c\
 			rotations.c\
-			swaps.c\
-			pushes.c\
-			insert_node.c\
+			sa_sb_ss.c\
+			pa_pb.c\
 			run_program.c\
 			main.c
 

@@ -6,57 +6,57 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:48:27 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/30 18:55:33 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/03/31 10:47:02 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stacks *longer_second_step(t_stacks *stacks)
+void	 longer_second_step(t_stacks *stacks)
 {
-	t_stacks *tmp;
+	// t_stacks *tmp;
 	t_lists	*head_a;
 	t_lists	*tail_a;
 
-	tmp = stacks;
-	head_a = tmp->head_a;
-	tail_a = tmp->head_a;
+	// tmp = stacks;
+	head_a = stacks->head_a;
+	tail_a = stacks->head_a;
 	while (tail_a->next != NULL)
 		tail_a = tail_a->next;
 	if (head_a->nbr < tail_a->nbr)
 	{
-		tmp = pb(tmp);
+		pb(stacks);
 		// printf("VERIFYING LISTS AFTER RETURN FROM PB\n");
 		// display_list(tmp->head_a);
 		// display_list(tmp->head_b);
-		tmp->midpoint++;
+		stacks->midpoint++;
 		// printf("MIDPOINT VALUE:%d\n", tmp->midpoint);
 	}
 	else
     {
         // write(1, "sa\n", 3); THis needs to be interpretted by checker
-		tmp->head_a = swap_list(tmp->head_a);
+		sa(stacks);
     }
-	tmp->head_a = rotate_list(tmp, tmp->head_a);
+	ra(stacks);
 	// printf("LISTS AFTER LONGER SECOND STEP\n");
 	// display_list(tmp->head_a);
 	// printf("\n");
 	// display_list(tmp->head_b);
-	return (tmp);
+	// return (tmp);
 }
 
-t_stacks	*second_step(t_stacks *stacks)
+void	second_step(t_stacks *stacks)
 {
 	bool        check;
-	t_stacks    *tmp;
+	// t_stacks    *tmp;
 	t_lists     *head_a;
 	t_lists     *tail_a;
 	int         i;
 
 	i = 1;
-	tmp = stacks;
-	head_a = tmp->head_a;
-	tail_a = tmp->head_a;
+	// tmp = stacks;
+	head_a = stacks->head_a;
+	tail_a = stacks->head_a;
 	check = true;
 	while (check)
 	{
@@ -67,8 +67,8 @@ t_stacks	*second_step(t_stacks *stacks)
 		// display_list(tmp->head_b);
 		// printf("seg fault thrice\n");
 		i++;
-		tail_a = tmp->head_a;
-		head_a = tmp->head_a;
+		tail_a = stacks->head_a;
+		head_a = stacks->head_a;
 		// printf("seg fault fourth\n");
 		while (tail_a->next != NULL)
 			tail_a = tail_a->next;
@@ -80,7 +80,8 @@ t_stacks	*second_step(t_stacks *stacks)
 		{
 			// printf("FIRST IF - SWAP A - START LIST\n");
 			// display_list(tmp->head_a);
-			tmp->head_a = swap_list(tmp->head_a);
+			sa(stacks);
+			// tmp->head_a = swap_list(tmp->head_a);
 			// printf("FIRST IF - SWAP A - RESULT\n");
 			// display_list(tmp->head_a);
 			// tmp->head_a = swap_list(tmp->head_a);
@@ -88,7 +89,8 @@ t_stacks	*second_step(t_stacks *stacks)
 		else if (head_a->nbr > head_a->next->nbr && head_a->nbr > tail_a->nbr)
 		{
 			// printf("SECOND IF - ROTATE A\n");
-			tmp->head_a = rotate_list(tmp, tmp->head_a);
+			ra(stacks);
+			// tmp->head_a = rotate_list(tmp, tmp->head_a); // this is good code. changing to stacks
 			// printf("SECOND IF - ROTATE A - RESULT\n");
 			// display_list(tmp->head_a);
 			// tmp->head_a = rotate_list(tmp->head_a);
@@ -96,7 +98,7 @@ t_stacks	*second_step(t_stacks *stacks)
 		else if (head_a->next->nbr > tail_a->nbr && head_a->next != NULL)
 		{
 			// printf("SENT TO LONG SECOND STEP\n");
-			tmp = longer_second_step(tmp);
+			longer_second_step(stacks);
 			// printf("VERIFYING LISTS RETURNED TO LONG 2nd STEP\n");
 			// display_list(tmp->head_a);
 			// display_list(tmp->head_b);
@@ -108,5 +110,73 @@ t_stacks	*second_step(t_stacks *stacks)
 			check = false;
 		}
 	}
-	return (tmp);
+	// return (tmp);
 }
+
+// This is functioning properly. Attempting to change some functions to stacks instead of lists.
+
+// t_stacks *longer_second_step(t_stacks *stacks)
+// {
+// 	t_stacks *tmp;
+// 	t_lists	*head_a;
+// 	t_lists	*tail_a;
+
+// 	tmp = stacks;
+// 	head_a = tmp->head_a;
+// 	tail_a = tmp->head_a;
+// 	while (tail_a->next != NULL)
+// 		tail_a = tail_a->next;
+// 	if (head_a->nbr < tail_a->nbr)
+// 	{
+// 		tmp = pb(tmp);
+// 		// printf("VERIFYING LISTS AFTER RETURN FROM PB\n");
+// 		// display_list(tmp->head_a);
+// 		// display_list(tmp->head_b);
+// 		tmp->midpoint++;
+// 		// printf("MIDPOINT VALUE:%d\n", tmp->midpoint);
+// 	}
+// 	else
+//     {
+//         // write(1, "sa\n", 3); THis needs to be interpretted by checker
+// 		tmp->head_a = swap_list(tmp->head_a);
+//     }
+// 	tmp->head_a = rotate_list(tmp, tmp->head_a);
+// 	// printf("LISTS AFTER LONGER SECOND STEP\n");
+// 	// display_list(tmp->head_a);
+// 	// printf("\n");
+// 	// display_list(tmp->head_b);
+// 	return (tmp);
+// }
+
+// t_stacks *longer_second_step(t_stacks *stacks)
+// {
+// 	t_stacks *tmp;
+// 	t_lists	*head_a;
+// 	t_lists	*tail_a;
+
+// 	tmp = stacks;
+// 	head_a = tmp->head_a;
+// 	tail_a = tmp->head_a;
+// 	while (tail_a->next != NULL)
+// 		tail_a = tail_a->next;
+// 	if (head_a->nbr < tail_a->nbr)
+// 	{
+// 		tmp = pb(tmp);
+// 		// printf("VERIFYING LISTS AFTER RETURN FROM PB\n");
+// 		// display_list(tmp->head_a);
+// 		// display_list(tmp->head_b);
+// 		tmp->midpoint++;
+// 		// printf("MIDPOINT VALUE:%d\n", tmp->midpoint);
+// 	}
+// 	else
+//     {
+//         // write(1, "sa\n", 3); THis needs to be interpretted by checker
+// 		tmp->head_a = swap_list(tmp->head_a);
+//     }
+// 	tmp = ra(tmp);
+// 	// printf("LISTS AFTER LONGER SECOND STEP\n");
+// 	// display_list(tmp->head_a);
+// 	// printf("\n");
+// 	// display_list(tmp->head_b);
+// 	return (tmp);
+// }
