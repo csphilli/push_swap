@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/03/31 12:46:25 by csphilli         ###   ########.fr        #
+#    Updated: 2020/03/31 13:01:09 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC_FILES = display_list.c\
 			sort_parse.c\
 			first_step.c\
 			second_step.c\
-			rotations.c\
+			ra_rb_rr.c\
 			sa_sb_ss.c\
 			pa_pb.c\
 			run_program.c\
