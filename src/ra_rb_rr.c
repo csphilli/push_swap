@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:33:26 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 14:53:55 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 21:17:54 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void		ra(t_stacks *stacks) // this needs to be part of checker
 		// printf("head:%d\n", head->nbr);
 		stacks->head_a = tmp_head;
 		stacks->nbr_moves++;
+		printf("ra - nbr_moves:%d\n", stacks->nbr_moves);
 	}
 	// printf("ROTATE LIST - LIST END\n");
 	// display_list(stacks->head_a);
@@ -69,6 +70,7 @@ void		rb(t_stacks *stacks) // this needs to be part of checker
 		// printf("head:%d\n", head->nbr);
 		stacks->head_b = tmp_head;
 		stacks->nbr_moves++;
+		printf("rb - nbr_moves:%d\n", stacks->nbr_moves);
 	}
 	// printf("ROTATE LIST - LIST END\n");
 	// display_list(stacks->head_b);
@@ -80,4 +82,5 @@ void		rr(t_stacks *stacks)
 	ra(stacks);
 	rb(stacks);
 	stacks->nbr_moves--;
+	printf("rr - nbr_moves:%d\n", stacks->nbr_moves);
 }

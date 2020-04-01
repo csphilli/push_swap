@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 10:08:03 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 11:08:45 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 21:05:10 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	fourth_step(t_stacks *stacks)
 {
+	// printf("START FOURTH STEP\n");
 	bool	check;
 	t_lists *tail_a_prev;
 	t_lists *tail_b_prev;
@@ -38,5 +39,5 @@ void	fourth_step(t_stacks *stacks)
 		else
 			check = false;
 	}
-
+	// printf("END FOURTH STEP\n");
 }

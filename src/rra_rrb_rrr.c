@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 10:12:03 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 14:54:15 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 21:17:30 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	rra(t_stacks *stacks)
 		tail_minus_one->next = NULL;
 		stacks->head_a = tail;
 		stacks->nbr_moves++;
+		printf("rra - nbr_moves:%d\n", stacks->nbr_moves);
 	}
 }
 
@@ -55,6 +56,8 @@ void	rrb(t_stacks *stacks)
 		tail_minus_one->next = NULL;
 		stacks->head_b = tail;
 		stacks->nbr_moves++;
+		printf("rrb - nbr_moves:%d\n", stacks->nbr_moves);
+		
 	}
 }
 
@@ -63,4 +66,5 @@ void	rrr(t_stacks *stacks)
 	rra(stacks);
 	rrb(stacks);
 	stacks->nbr_moves--;
+	printf("rrr - nbr_moves:%d\n", stacks->nbr_moves);
 }

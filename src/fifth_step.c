@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 11:07:38 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 14:50:19 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 20:58:30 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static void	check_singles_a(t_stacks *stacks)
 	// printf("CHECK SINGLES A - START\n");
 	t_lists *tail_a_prev;
 
-	tail_a_prev = stacks->head_a;
-	if (tail_a_prev->next->next == NULL)
-			tail_a_prev = stacks->head_a;
-	else		
-		while (tail_a_prev->next->next != NULL)
-			tail_a_prev = tail_a_prev->next;
+	tail_a_prev = stacks->head_a;	
 	// printf("tail_a_prev->nbr:%d\n", tail_a_prev->nbr);
 	if (stacks->head_a && stacks->head_a->next != NULL)
 	{
+		if (tail_a_prev->next->next && tail_a_prev->next->next == NULL)
+			tail_a_prev = stacks->head_a;
+		else	
+			while (tail_a_prev->next->next != NULL)
+				tail_a_prev = tail_a_prev->next;
 		// printf("inside if\n");
 		if (stacks->head_a->nbr > stacks->head_a->next->nbr &&\
 				stacks->head_a->nbr > tail_a_prev->next->nbr)
@@ -46,15 +46,16 @@ static void	check_singles_b(t_stacks *stacks)
 
 	tail_b_prev = stacks->head_b;
 	// printf("tail_b_prev->nbr:%d\n", tail_b_prev->nbr);
-	if (tail_b_prev->next == NULL)
-			tail_b_prev = stacks->head_b;
-	else		
-		while (tail_b_prev->next->next != NULL)
-			tail_b_prev = tail_b_prev->next;
+	
 	// printf("tail_b_prev->nbr:%d\n", tail_b_prev->nbr);
 	// printf("tail_b_prev->next->nbr:%d\n", tail_b_prev->next->nbr);
 	if (stacks->head_b && stacks->head_b->next != NULL)
 	{
+		if (tail_b_prev->next == NULL)
+			tail_b_prev = stacks->head_b;
+		else	
+			while (tail_b_prev->next->next != NULL)
+				tail_b_prev = tail_b_prev->next;
 		// printf("inside if\n");
 		if (stacks->head_b->nbr < stacks->head_b->next->nbr &&\
 			stacks->head_b->nbr < tail_b_prev->next->nbr)
@@ -110,46 +111,6 @@ void	fifth_step(t_stacks *stacks)
 		check_singles_a(stacks);
 		check_singles_b(stacks);
 		check_double_swaps(stacks);
-		// tail_a_prev = stacks->head_a;
-		// tail_b_prev = stacks->head_b;
-
-		// if (tail_a_prev->next->next == NULL)
-		// 	tail_a_prev = stacks->head_a;
-		// else		
-		// 	while (tail_a_prev->next->next != NULL)
-		// 		tail_a_prev = tail_a_prev->next;
-
-		// if (tail_b_prev->next->next == NULL)
-		// 	tail_b_prev = stacks->head_b;
-		// else
-		// 	while (tail_b_prev->next->next != NULL)
-		// 		tail_b_prev = tail_b_prev->next;
-		// printf("tail_a_prev->nbr:%d | tail_a->next->nbr:%d\n", tail_a_prev->nbr, tail_a_prev->next->nbr);
-		// printf("tail_b_prev->nbr:%d | tail_b->next->nbr:%d\n", tail_b_prev->nbr, tail_b_prev->next->nbr);
-		// if (stacks->head_a->nbr > stacks->head_a->next->nbr &&\
-		// 	stacks->head_a->nbr > tail_a_prev->next->nbr)
-		// 	ra(stacks);
-		// else if (tail_a_prev->next->nbr < tail_a_prev->nbr)
-		// 	rra(stacks);
-		// else if (stacks->head_a->nbr > stacks->head_a->next->nbr)
-		// 	sa(stacks);
-
-		// if (stacks->head_b->nbr < stacks->head_b->next->nbr &&\
-		// 	stacks->head_b->nbr < tail_b_prev->next->nbr)
-		// 	rb(stacks);
-		// else if (tail_b_prev->next->nbr > tail_b_prev->nbr)
-		// 	rrb(stacks);
-		// else if (stacks->head_b->nbr < stacks->head_b->next->nbr)
-		// 	sb(stacks);
-		
-		// if (stacks->head_a->nbr > stacks->head_a->next->nbr &&\
-		// 	stacks->head_b->nbr < stacks->head_b->next->nbr)
-		// 	ss(stacks);
-		
-		// if (stacks->head_a->nbr > stacks->head_a->next->nbr)
-		// 	sa(stacks);
-		// else if (stacks->head_b->nbr < stacks->head_b->next->nbr)
-		// 	sb(stacks);
 		
 		if (stacks->head_a->nbr < stacks->head_b->nbr && stacks->head_b != NULL)
 			pb(stacks);

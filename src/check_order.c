@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:57:12 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 15:15:32 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 22:36:14 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,31 @@
 
 void	check_order(t_stacks *stacks)
 {
-	bool	sort_check;
-	t_lists *tmp;
+	printf("CHECK ORDER START\n");
+	// display_list(stacks->head_a);
+	// printf("\nLIST B\n");
+	// if (stacks->head_b != NULL)
+	// 	display_list(stacks->head_b);
+	t_lists *head;
+	t_lists *second;
 
-	sort_check = true;
-	tmp = stacks->head_a;
-	if (tmp && stacks->head_b == NULL)
+	head = stacks->head_a;
+	second = stacks->head_a;
+	if (head && head->next == NULL && stacks->head_b == NULL)
+		stacks->sorted = true;
+	else if (head && head->next != NULL && stacks->head_b == NULL)
 	{
-		while (tmp->next != NULL)
+		second = second->next;
+		while (head && second && head->nbr < second->nbr && stacks->sorted == false)
 		{
-			if (tmp->nbr > tmp->next->nbr)
-				sort_check = false;
-			tmp = tmp->next;
+			head = head->next;
+			second = second->next;
+			if (second->next == NULL && head->nbr < second->nbr)
+			{
+				printf("CHECK ORDER FINISHED - SORTED\n");
+				stacks->sorted = true;
+			}
 		}
 	}
-	stacks->sorted = sort_check;
-	// return (stacks);
+	printf("CHECK ORDER FINISHED - NOT SORTED\n");
 }

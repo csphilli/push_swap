@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:41:13 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 15:18:58 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 22:27:58 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,43 @@
 void	begin_sort(t_stacks *stacks)
 {
 	// printf("BEGIN SORT\n");
-	first_step(stacks); // sorting correctly.
+	// printf("nbr_moves START:%d\n", stacks->nbr_moves);
 	check_order(stacks);
-	if (stacks->sorted == true)
+	if (stacks->sorted == false)
 	{
-		display_list(stacks->head_a);
-		display_list(stacks->head_b);
-		exit(-1);
+		printf("ENTERING 1st STEP\n");
+		first_step(stacks); // sorting correctly.
 	}
-    // stacks->head_a = first_step(stacks, stacks->head_a); // sorting correctly.
-	// printf("2nd STEP\n");
-	second_step(stacks); // sorting correctly!
-	third_step(stacks);
-	fourth_step(stacks);
-	fifth_step(stacks);
+	// printf("nbr_moves after 1st step:%d\n", stacks->nbr_moves);
+	check_order(stacks);
+	if (stacks->sorted == false)
+	{
+		printf("ENTERING 2nd STEP\n");
+		second_step(stacks);
+	}
+	check_order(stacks);
+	if (stacks->sorted == false)
+	{
+		printf("ENTERING 3rd STEP\n");
+		third_step(stacks);
+	}
+	check_order(stacks);
+	if (stacks->sorted == false)
+	{
+		if (stacks->head_a && stacks->head_b &&\
+		stacks->head_a->next != NULL && stacks->head_b->next != NULL)
+		{
+			printf("ENTERING 4th STEP\n");
+			fourth_step(stacks);
+		}
+	}	
+	check_order(stacks);
+	if (stacks->sorted == false)
+	{
+		printf("ENTERING 5th STEP\n");
+		fifth_step(stacks);
+	}
+	printf("STEPS MASTER DONE\n");
+	// printf("nbr_moves after 5th step:%d\n", stacks->nbr_moves);
 	// stacks = second_step(stacks); // sorting correctly!
 }
