@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotations.c                                        :+:      :+:    :+:   */
+/*   ra_rb_rr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:33:26 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/31 12:52:43 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 14:53:55 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		rb(t_stacks *stacks) // this needs to be part of checker
 	tail = stacks->head_b;
 	tmp_head = head;
 	// printf("ROTATE LIST - LIST START\n");
-	// display_list(stacks->head_a);
+	// display_list(stacks->head_b);
 	if (stacks->head_b != NULL || stacks->head_b->next != NULL)
 	{
 		while (tail->next != NULL)
@@ -71,7 +71,7 @@ void		rb(t_stacks *stacks) // this needs to be part of checker
 		stacks->nbr_moves++;
 	}
 	// printf("ROTATE LIST - LIST END\n");
-	// display_list(stacks->head_a);
+	// display_list(stacks->head_b);
 	// return (tmp);
 }
 
@@ -79,4 +79,5 @@ void		rr(t_stacks *stacks)
 {
 	ra(stacks);
 	rb(stacks);
+	stacks->nbr_moves--;
 }

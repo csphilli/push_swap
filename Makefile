@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/03/31 13:01:09 by csphilli         ###   ########.fr        #
+#    Updated: 2020/04/01 15:10:11 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,14 +35,19 @@ SRC_FILES = display_list.c\
 			check_for_duplicates.c\
 			error.c\
 			push_pop_unshift.c\
-			sort_parse.c\
+			steps_master.c\
 			first_step.c\
 			second_step.c\
+			third_step.c\
+			fourth_step.c\
+			fifth_step.c\
 			ra_rb_rr.c\
 			sa_sb_ss.c\
+			rra_rrb_rrr.c\
 			pa_pb.c\
 			run_program.c\
-			main.c
+			main.c\
+			check_order.c
 
 all: $(NAME_PS)
 

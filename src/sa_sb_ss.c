@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:41:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/31 12:47:18 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 14:54:51 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void		sa(t_stacks *stacks)
 			head->next = NULL;
 			head = second;
 			stacks->head_a = head;
-		}		
+		}
+		stacks->nbr_moves++;	
 	}
 	// printf("SWAP LIST - LIST END\n");
 	// display_list(head);
@@ -69,7 +70,8 @@ void		sb(t_stacks *stacks)
 			head->next = NULL;
 			head = second;
 			stacks->head_b = head;
-		}		
+		}
+		stacks->nbr_moves++;	
 	}
 	// printf("SWAP LIST - LIST END\n");
 	// display_list(head);
@@ -80,4 +82,5 @@ void	ss(t_stacks *stacks)
 {
 	sa(stacks);
 	sb(stacks);
+	stacks->nbr_moves--;
 }

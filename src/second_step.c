@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:48:27 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/31 10:47:02 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/01 14:25:52 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	 longer_second_step(t_stacks *stacks)
 		// printf("VERIFYING LISTS AFTER RETURN FROM PB\n");
 		// display_list(tmp->head_a);
 		// display_list(tmp->head_b);
-		stacks->midpoint++;
+		// stacks->list_len_b++;
 		// printf("MIDPOINT VALUE:%d\n", tmp->midpoint);
 	}
 	else
