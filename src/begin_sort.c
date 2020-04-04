@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:41:13 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/04 13:11:37 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/04 14:19:56 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@ void	begin_sort(t_stacks *stacks)
 {
 	// printf("BEGIN SORT\n");
 	// printf("nbr_moves START:%d\n", stacks->nbr_moves);
+	check_full_sort(stacks);
+	if (stacks->full_sort == false)
+	{
+		if (stacks->list_a_len_start == 3)
+			sort_three_numbers(stacks);
+		else if (stacks->list_a_len_start == 2)
+			sort_two_numbers(stacks);
+	}
+	/*
 	if (stacks->head_a != NULL)
 	{
 		scan_for_min_max_a(stacks);
@@ -39,6 +48,7 @@ void	begin_sort(t_stacks *stacks)
 		if (stacks->list_a_len_start < 4)
 			sort_short(stacks);
 	}
+	*/
 /*
 	if (stacks->sorted == false)
 	{

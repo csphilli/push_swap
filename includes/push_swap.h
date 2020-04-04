@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/04 13:10:47 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/04 13:35:40 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void		fourth_step(t_stacks *stacks);
 void		fifth_step(t_stacks *stacks);
 
 void		sort_short(t_stacks *stacks);
+void		sort_three_numbers(t_stacks *stacks);
+void		sort_two_numbers(t_stacks *stacks);
 
 t_stacks	*create_stacks(void);
 t_lists		*create_new_node(int nbr);
