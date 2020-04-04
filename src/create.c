@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 13:12:23 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 15:07:51 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/04 13:10:13 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ t_stacks	*initialize_stacks(t_stacks *stack)
 	stack->head_a = NULL;
 	stack->head_b = NULL;
 	stack->sorted = false;
+	stack->full_sort = false;
+	stack->a_sorted = false;
+	stack->b_sorted = false;
+	stack->a_max = 0;
+	stack->a_min = 0;
+	stack->b_max = 0;
+	stack->b_min = 0;
 	stack->midpoint = 0;
 	stack->list_a_len_start = 0;
 	stack->nbr_moves = 0;

@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/04/04 10:46:21 by csphilli         ###   ########.fr        #
+#    Updated: 2020/04/04 12:09:50 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJECTS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 SRC_DIR = ./src/
 SRC_FILES = display_list.c\
 			create.c\
-			check_for_duplicates.c\
+			scanning.c\
 			error.c\
 			push_pop_unshift.c\
 			begin_sort.c\
@@ -47,7 +47,8 @@ SRC_FILES = display_list.c\
 			pa_pb.c\
 			run_program.c\
 			main.c\
-			check_order.c
+			check_orders.c\
+			sort_short.c
 
 all: $(NAME_PS)
 

@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 15:13:14 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/04 13:10:47 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,18 @@ typedef struct	s_stacks
 {
 	t_lists			*head_a;
 	t_lists			*head_b;
-	int				midpoint;
+	int				midpoint; // might not need
 	int				list_a_len_start;
-	int				list_len_b;
+	int				list_len_b; // might not need
 	int				nbr_moves;
-	bool			sorted;
+	bool			sorted; // changing to sorted a && sorted b - might not need this
+	bool			full_sort;
+	bool			a_sorted;
+	bool			b_sorted;
+	int				a_max;
+	int				a_min;
+	int				b_max;
+	int				b_min;
 }				t_stacks;
 
 /*
@@ -90,13 +97,21 @@ void		third_step(t_stacks *stacks);
 void		fourth_step(t_stacks *stacks);
 void		fifth_step(t_stacks *stacks);
 
+void		sort_short(t_stacks *stacks);
+
 t_stacks	*create_stacks(void);
 t_lists		*create_new_node(int nbr);
 t_stacks	*initialize_stacks(t_stacks *stack);
 void		display_list(t_lists *list);
 // void		insert_node(t_stacks *stacks, int nbr);
-void		check_for_duplicates(t_stacks *stacks);
-void		check_order(t_stacks *stacks);
+void		scan_for_duplicates(t_stacks *stacks);
+void		scan_for_min_max_a(t_stacks *stacks);
+void		scan_for_min_max_b(t_stacks *stacks);
+void		print_min_max_lists(t_stacks *stacks); // remove before submission
+void		check_order_a_v1(t_stacks *stacks);
+void		check_order_a(t_stacks *stacks);
+void		check_order_b(t_stacks *stacks);
+void		check_full_sort(t_stacks *stacks);
 // t_lists		*list_pop(t_lists *list);
 // t_lists		*list_push(int nbr, t_lists *list);
 
