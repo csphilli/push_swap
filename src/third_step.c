@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 09:45:01 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 22:27:25 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/04 10:46:37 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    third_step(t_stacks *stacks)
     // printf("START THIRD STEP\n");
     int     midpoint;
 
-    midpoint = stacks->list_a_len_start / 2 + 1;
+    midpoint = stacks->list_a_len_start / 2;
     // printf("list_a_len_start:%d\n", stacks->list_a_len_start);
     if (stacks->list_a_len_start > 3)
     {
