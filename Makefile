@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/04/07 20:53:08 by csphilli         ###   ########.fr        #
+#    Updated: 2020/04/09 14:45:21 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,9 @@ SRC_DIR = ./src/
 SRC_FILES = display_list.c\
 			create.c\
 			scanning.c\
+			find_median.c\
 			error.c\
-			push_pop_unshift.c\
+			unshifts.c\
 			begin_sort.c\
 			ra_rb_rr.c\
 			sa_sb_ss.c\
@@ -46,11 +47,11 @@ SRC_FILES = display_list.c\
 			sort_short.c\
 			sort_a_to_b.c\
 			sort_b_to_a.c\
-			bsort.c\
-			charm.c\
 			the_big_sort.c\
 			find_cheapest.c\
 			get_directions.c\
+			pushes.c\
+			pops.c
 
 all: $(NAME_PS)
 

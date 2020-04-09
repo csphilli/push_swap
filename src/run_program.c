@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:53:05 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/08 21:32:22 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/09 14:37:51 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@ t_stacks	*run_program(t_stacks *stacks, int ac, char **av)
 		i++;
 		stacks->ll_a_start++;		
 	}
-	scan_for_duplicates(stacks);
-	
+	scan_for_duplicates(stacks);	
 	begin_sort(stacks);
-	// printf("PRINTING STACKS IN RUN PROGRAM\n");
-	// printf("LIST A\n");
-	// display_list(stacks->head_a);
-	// printf("LIST B\n");
-	// display_list(stacks->head_b);
 	return (stacks);
 }

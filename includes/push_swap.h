@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/08 21:32:08 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/09 14:49:10 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ void		rrr(t_stacks *stacks, int nbr);
 */
 
 int			get_midpoint(t_lists *list);
-int			moves_to_top(t_lists *list, int nbr);
-int			list_len(t_lists *list);
-t_lists 	*find_next_move(t_lists *list_a, t_lists *list_b);
+int			to_top(t_lists *list, int nbr);
+int			ll(t_lists *list);
+t_lists 	*get_next(t_lists *list_a, t_lists *list_b);
 int			next_large(t_lists *list, int nbr);
-int			get_direction(t_lists *list, int nbr);
+int			get_dir(t_lists *list, int nbr);
 int			dir_mod(t_lists *list_a, int next_nbr, t_lists *list_b, int nbr);
 int			find_median(t_lists *list_a);
 
