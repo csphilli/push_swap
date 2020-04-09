@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:33:26 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 14:36:55 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/09 17:49:16 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ void		ra(t_stacks *stacks, int nbr) // this needs to be part of checker
 		tail = tail->next;
 		tail->next = NULL;
 		stacks->head_a = tmp_head;
-		stacks->nbr_moves++;
 		stacks->moves_a--;
 		if (nbr == 0)
-			printf("ra - nbr_moves:%d\n", stacks->nbr_moves);
+			ft_putendl("ra");
 	}
 }
 
@@ -55,10 +54,9 @@ void		rb(t_stacks *stacks, int nbr) // this needs to be part of checker
 		tail = tail->next;
 		tail->next = NULL;
 		stacks->head_b = tmp_head;
-		stacks->nbr_moves++;
 		stacks->moves_b--;
 		if (nbr == 0)
-			printf("rb - nbr_moves:%d\n", stacks->nbr_moves);
+			ft_putendl("rb");
 		
 	}
 }
@@ -67,6 +65,6 @@ void		rr(t_stacks *stacks, int nbr)
 {
 	ra(stacks, nbr);
 	rb(stacks, nbr);
-	stacks->nbr_moves--;
-	printf("rr - nbr_moves:%d\n", stacks->nbr_moves);
+	if (nbr == 1)
+		ft_putendl("rr");
 }

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   begin_sort.c                                       :+:      :+:    :+:   */
+/*   ft_atoimax.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 14:41:13 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 18:12:56 by csphilli         ###   ########.fr       */
+/*   Created: 2019/10/20 17:33:15 by cphillip          #+#    #+#             */
+/*   Updated: 2020/04/09 16:53:57 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "./header/libft.h"
 
-void	begin_sort(t_stacks *stacks)
+intmax_t		ft_atoimax(const char *str)
 {
-	check_full_sort(stacks);
-	if (stacks->full_sort == false)
+	int i;
+	int sign;
+	intmax_t res;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (str[i] && (ft_isspace(str[i])))
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] && ft_isdigit(str[i]))
 	{
-		if (stacks->ll_a_start == 2)
-			sort_two_numbers(stacks);
-		else if (stacks->ll_a_start == 3)
-			sort_three_numbers(stacks);	
-		else
-		{
-			sort_a_to_b(stacks);
-			sort_three_numbers(stacks);
-			the_big_sort(stacks);
-		}
-		check_full_sort(stacks);
+		res = res * 10 + (str[i] - 48);
+		i++;
 	}
+	return (res * sign);
 }

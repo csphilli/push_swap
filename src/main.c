@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 19:00:19 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 14:17:57 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/09 18:35:49 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,19 @@ int	main(int ac, char **av)
 	t_stacks	*stacks;
 
 	stacks = create_stacks();
+
 	if (ac > 1)
-		stacks = run_program(stacks, ac, av);
+	{
+		stacks = parsing(stacks, ac, av);
+		// if (ac == 2)
+		// 	stacks = parse_string(stacks, av[1]);
+		// else
+		// 	stacks = parse_array(stacks, ac, av);
+	}
 	else
 		ERROR;
+	scan_for_duplicates(stacks);	
+	begin_sort(stacks);
 	printf("LIST A\n");
 	display_list(stacks->head_a);
 	if (stacks->head_b != NULL)

@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/04/09 14:45:21 by csphilli         ###   ########.fr        #
+#    Updated: 2020/04/09 17:22:45 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,9 @@ SRC_FILES = display_list.c\
 			find_cheapest.c\
 			get_directions.c\
 			pushes.c\
-			pops.c
+			pops.c\
+			checker.c\
+			parsing.c
 
 all: $(NAME_PS)
 

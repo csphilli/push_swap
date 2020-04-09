@@ -20,9 +20,9 @@ static void	push_to_b_part_two(t_stacks *stacks)
 	{
 		a = stacks->head_a;
 		if (a->nbr == stacks->a_max || a->nbr == stacks->a_min)
-			ra(stacks, 0);
+			exec_parse(stacks, "ra");
 		else
-			pb(stacks);
+			exec_parse(stacks, "pb");
 	}
 }
 
@@ -33,16 +33,19 @@ void		sort_a_to_b(t_stacks *stacks)
 
 	a = stacks->head_a;
 	median = find_median(stacks->head_a);
+	init_min_max(stacks);
 	min_max_a(stacks);
 	stacks->ll_a_cur = stacks->ll_a_start;
+	// printf("ll_a_cur: %d | start: %d\n", stacks->ll_a_cur, stacks->ll_a_start);
+	// printf("median: %d\n", median);
 	while (stacks->ll_a_cur > stacks->ll_a_start / 2)
 	{
 		a = stacks->head_a;
 		if ((a->nbr != stacks->a_max) && (a->nbr != stacks->a_min)
-			 && (a->nbr <= median))
-			pb(stacks);
+			&& (a->nbr <= median))
+			exec_parse(stacks, "pb");
 		else
-			ra(stacks, 0);
+			exec_parse(stacks, "ra");
 	}
 	push_to_b_part_two(stacks);
 }
