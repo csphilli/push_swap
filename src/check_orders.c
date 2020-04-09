@@ -14,7 +14,7 @@
 
 void	check_order_a_v1(t_stacks *stacks)
 {
-	printf("CHECK A ORDER START\n");
+	// printf("CHECK A ORDER START\n");
 	// display_list(stacks->head_a);
 	// printf("\nLIST B\n");
 	// if (stacks->head_b != NULL)
@@ -35,12 +35,12 @@ void	check_order_a_v1(t_stacks *stacks)
 			second = second->next;
 			if (second->next == NULL && head->nbr < second->nbr)
 			{
-				printf("CHECK A ORDER FINISHED - SORTED\n");
+				// printf("CHECK A ORDER FINISHED - SORTED\n");
 				stacks->sorted = true;
 			}
 		}
 	}
-	printf("CHECK A ORDER FINISHED - NOT SORTED\n");
+	// printf("CHECK A ORDER FINISHED - NOT SORTED\n");
 }
 
 void	check_order_a(t_stacks *stacks)
@@ -58,28 +58,32 @@ void	check_order_a(t_stacks *stacks)
 	stacks->a_sorted = false;
 	if (head)
 	{
-		if (head->next == NULL)
-			stacks->a_sorted = true;
+		// if (head->next == NULL)
+		// 	stacks->a_sorted = true;
 		second = head->next;
-		while (head->nbr < second->nbr)
+		while (second != NULL)
 		{
 			// printf("head->nbr:%d | second->nbr:%d | second->next:%p\n", head->nbr, second->nbr, second->next);
-			if (second->next == NULL && head->nbr < second->nbr)
+			if (head->nbr > second->nbr)
+				break ;
+			else if (second->next == NULL && head->nbr < second->nbr)
 			{
 				// printf("A IN ORDER (ASCENDING\n");
 				stacks->a_sorted = true;
-				break ;
+				// break ;
 			}
 			head = head->next;
 			second = second->next;
 		}
 	}
 	// stacks->a_sorted == true ? printf("A SORTED (ASCENDING)\n") : printf("A NOT SORTED\n");
+	// printf("LIST B\n");
+	// display_list(stacks->head_b);
 }
 
 void	check_order_b(t_stacks *stacks)
 {
-	printf("CHECK B ORDER START\n");
+	// printf("CHECK B ORDER START\n");
 	// display_list(stacks->head_a);
 	// printf("\nLIST B\n");
 	// if (stacks->head_b != NULL)
@@ -90,25 +94,30 @@ void	check_order_b(t_stacks *stacks)
 	head = stacks->head_b;
 	second = stacks->head_b;
 	stacks->b_sorted = false;
-	if (head)
+	// printf("head->next:%p\n", head->next);
+	if (head != NULL)
 	{
-		if (head->next == NULL)
-			stacks->b_sorted = true;
+		// if (head->next == NULL)
+		// 	stacks->b_sorted = true;
 		second = head->next;
-		while (second->nbr < head->nbr)
-		{
-			// printf("head->nbr:%d | second->nbr:%d\n", head->nbr, second->nbr);
-			if (second->next == NULL && second->nbr < head->nbr)
+		while (second != NULL)
+		{				
+			// printf("head_b->nbr:%d | second_b->nbr:%d | second_b->next:%p\n", head->nbr, second->nbr, second->next);
+			if (head->nbr < second->nbr)
+				break ;
+			else if (second->next == NULL && head->nbr > second->nbr)
 			{
 				// printf("B IN ORDER (DESCENDING\n");
 				stacks->b_sorted = true;
-				break ;
+				// break ;
 			}
 			head = head->next;
-			second = second->next;
+			second = second->next;	
 		}
 	}
-	stacks->a_sorted == true ? printf("B SORTED (DESCENDING)\n") : printf("B NOT SORTED\n");
+	// stacks->b_sorted == true ? printf("B SORTED (DESCENDING)\n") : printf("B NOT SORTED\n");
+	// printf("LIST A\n");
+	// display_list(stacks->head_a);
 }
 
 void	check_full_sort(t_stacks *stacks)

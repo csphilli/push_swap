@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:18:23 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/31 12:31:55 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/04 17:02:26 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,25 @@ void		pop_a(t_stacks *stacks)
 void		pop_b(t_stacks *stacks)
 {
 	// printf("POP LIST - LIST START\n");
-	
-	t_lists *tmp;
 	t_lists *head;
+	t_lists *tmp;
 
 	head = stacks->head_b;
 	tmp = head;
 	// display_list(head);
-	head = tmp->next;
-	tmp->nbr = '\0';
-	tmp->next = NULL;
-	stacks->head_b = head;
+	if (tmp->next != NULL)
+	{
+		head = tmp->next;
+		tmp->next = NULL;
+		stacks->head_b = head;
+	}
+	else
+		stacks->head_b = NULL;
+	// stacks->head_b = head;
 	free(tmp);
 	// printf("POP LIST - AFTER POP\n");
 	// display_list(head);
+	// printf("no list?\n");
 	// return (head);
 }
 

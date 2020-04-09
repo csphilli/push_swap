@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:34:16 by csphilli          #+#    #+#             */
-/*   Updated: 2020/03/30 13:09:26 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/08 18:55:46 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,9 @@ void		display_list(t_lists *list)
 		}
 	}
 }
+
+// void		display_moves(t_stacks *stacks)
+// {
+// 	printf("MOVES TO TOP: A\nmin: %d | max: %d\n", stacks->moves_a_min, stacks->moves_a_max);
+// 	printf("MOVES TO TOP: B\nmin: %d | max: %d\n", stacks->moves_b_min, stacks->moves_b_max);
+// }

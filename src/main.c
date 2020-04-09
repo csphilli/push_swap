@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 19:00:19 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/04 12:26:00 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/08 22:17:28 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,20 @@ int	main(int ac, char **av)
 		ERROR;
 	printf("LIST A\n");
 	display_list(stacks->head_a);
-	// printf("LIST B\n");
-	// if (stacks->head_b != NULL)	
-	// 	display_list(stacks->head_b);
-	printf("STATS: LIST_A_LEN_START:%2d | NBR MOVES:%3d | LEN_B:%d\n", stacks->list_a_len_start,\
-		stacks->nbr_moves, stacks->list_len_b);
+	
+	if (stacks->head_b != NULL)
+	{
+		printf("LIST B\n");
+		display_list(stacks->head_b);
+	}
+	printf("STATS: ll_a_start:%2d | ll_a_cur:%d | NBR MOVES:%3d | ll_b_cur:%d\n", stacks->ll_a_start,\
+		stacks->ll_a_cur, stacks->nbr_moves, stacks->ll_b_cur);
 	// LEAK TESTING
 	// check_order_a_v1(stacks);
 	// stacks->sorted == true ? printf("List A sorted\n") : printf("List A NOT sorted\n");
 
-	while (1)
-	{
-	}
+	// while (1)
+	// {
+	// }
 	return (0);
 }
