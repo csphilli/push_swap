@@ -6,13 +6,13 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 10:12:03 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 17:49:36 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/10 23:08:40 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rra(t_stacks *stacks, int nbr)
+void	rra(t_stacks *stacks, int toggle)
 {
 	t_lists *tail;
 	t_lists *tail_minus_one;
@@ -29,12 +29,12 @@ void	rra(t_stacks *stacks, int nbr)
 		tail_minus_one->next = NULL;
 		stacks->head_a = tail;
 		stacks->moves_a--;
-		if (nbr == 0)
+		if (toggle == 0)
 			ft_putendl("rra");
 	}
 }
 
-void	rrb(t_stacks *stacks, int nbr)
+void	rrb(t_stacks *stacks, int toggle)
 {
 	t_lists *tail;
 	t_lists *tail_minus_one;
@@ -51,15 +51,15 @@ void	rrb(t_stacks *stacks, int nbr)
 		tail_minus_one->next = NULL;
 		stacks->head_b = tail;
 		stacks->moves_b--;
-		if (nbr == 0)
-			ft_putendl("rrb");	
+		if (toggle == 0)
+			ft_putendl("rrb");
 	}
 }
 
-void	rrr(t_stacks *stacks, int nbr)
+void	rrr(t_stacks *stacks, int toggle)
 {
-	rra(stacks, nbr);
-	rrb(stacks, nbr);
-	if (nbr == 1)
+	rra(stacks, 1);
+	rrb(stacks, 1);
+	if (toggle == 0)
 		ft_putendl("rrr");
 }

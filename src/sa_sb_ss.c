@@ -6,13 +6,13 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:41:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 16:16:31 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/10 23:08:53 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void		sa(t_stacks *stacks)
+void		sa(t_stacks *stacks, int toggle)
 {
 	t_lists *head;
 	t_lists *second;
@@ -27,17 +27,17 @@ void		sa(t_stacks *stacks)
 			head->next = second->next;
 			second->next = head;
 			head = second;
-			stacks->head_a = head;
+			stacks->head_a = head; // prob can move this to previous statement and save a line.
 		}
 		else
 		{
 			second->next = head;
 			head->next = NULL;
 			head = second;
-			stacks->head_a = head;
+			stacks->head_a = head; // prob can move this to previous statement and save a line.
 		}
-		stacks->nbr_moves++;
-		ft_putendl("sa");
+		if (toggle == 0)
+			ft_putendl("sa");
 	}
 }
 

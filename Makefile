@@ -6,11 +6,12 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/04/09 17:22:45 by csphilli         ###   ########.fr        #
+#    Updated: 2020/04/10 02:41:01 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_PS = push_swap
+NAME_CH = checker
 
 HEADER_FILES = push_swap.h
 
@@ -25,10 +26,6 @@ LIBRARIES = -lft -L$(LIBFT_DIR)
 HEADER_DIR = ./includes/
 HEADERS = $(addprefix $(HEADER_DIR), $(HEADER_FILES))
 
-OBJ_DIR = ./obj/
-OBJ_FILES = $(SRC_FILES:%.c=%.o)
-OBJECTS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
-
 SRC_DIR = ./src/
 SRC_FILES = display_list.c\
 			create.c\
@@ -42,7 +39,6 @@ SRC_FILES = display_list.c\
 			rra_rrb_rrr.c\
 			pa_pb.c\
 			run_program.c\
-			main.c\
 			check_orders.c\
 			sort_short.c\
 			sort_a_to_b.c\
@@ -52,13 +48,29 @@ SRC_FILES = display_list.c\
 			get_directions.c\
 			pushes.c\
 			pops.c\
-			checker.c\
 			parsing.c
 
-all: $(NAME_PS)
+SRC_FILES_PS = push_swap.c
+SRC_FILES_CH = checker.c
+SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
+SRCS_PS = $(addprefix $(SRC_DIR), $(SRC_FILES_PS))
+SRCS_CH = $(addprefix $(SRC_DIR), $(SRC_FILES_CH))
 
-$(NAME_PS): $(OBJ_DIR) $(LIBFT) $(OBJECTS)
-	$(CC) $(INCLUDES) $(OBJECTS) -o $(NAME_PS) $(LIBRARIES)
+OBJ_DIR = ./obj/
+OBJ_FILES = $(SRC_FILES:%.c=%.o)
+OBJ_FILES_PS = $(SRC_FILES_PS:%.c=%.o)
+OBJ_FILES_CH = $(SRC_FILES_CH:%.c=%.o)
+OBJECTS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
+OBJECTS_PS = $(addprefix $(OBJ_DIR), $(OBJ_FILES_PS))
+OBJECTS_CH = $(addprefix $(OBJ_DIR), $(OBJ_FILES_CH))
+
+all: $(NAME_PS) $(NAME_CH)
+
+$(NAME_PS): $(OBJ_DIR) $(LIBFT) $(OBJECTS) $(OBJECTS_PS)
+	$(CC) $(INCLUDES) $(OBJECTS) $(OBJECTS_PS) -o $(NAME_PS) $(LIBRARIES)
+
+$(NAME_CH): $(OBJ_DIR) $(LIBFT) $(OBJECTS) $(OBJECTS_CH)
+	$(CC) $(INCLUDES) $(OBJECTS) $(OBJECTS_CH) -o $(NAME_CH) $(LIBRARIES)
 
 $(OBJ_DIR):
 	@mkdir -p obj
@@ -79,6 +91,7 @@ clean:
 fclean: clean
 	@rm -f $(LIBFT)
 	@rm -rf $(NAME_PS)
+	@rm -rf $(NAME_CH)
 
 re:
 	@$(MAKE) fclean

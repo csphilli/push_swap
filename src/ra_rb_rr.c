@@ -6,13 +6,13 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:33:26 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 17:49:16 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/10 23:08:22 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void		ra(t_stacks *stacks, int nbr) // this needs to be part of checker
+void		ra(t_stacks *stacks, int toggle) // this needs to be part of checker
 {
 	t_lists		*tmp_head;
 	t_lists		*head;
@@ -31,12 +31,12 @@ void		ra(t_stacks *stacks, int nbr) // this needs to be part of checker
 		tail->next = NULL;
 		stacks->head_a = tmp_head;
 		stacks->moves_a--;
-		if (nbr == 0)
+		if (toggle == 0)
 			ft_putendl("ra");
 	}
 }
 
-void		rb(t_stacks *stacks, int nbr) // this needs to be part of checker
+void		rb(t_stacks *stacks, int toggle) // this needs to be part of checker
 {
 	t_lists		*tmp_head;
 	t_lists		*head;
@@ -55,16 +55,16 @@ void		rb(t_stacks *stacks, int nbr) // this needs to be part of checker
 		tail->next = NULL;
 		stacks->head_b = tmp_head;
 		stacks->moves_b--;
-		if (nbr == 0)
+		if (toggle == 0)
 			ft_putendl("rb");
 		
 	}
 }
 
-void		rr(t_stacks *stacks, int nbr)
+void		rr(t_stacks *stacks, int toggle)
 {
-	ra(stacks, nbr);
-	rb(stacks, nbr);
-	if (nbr == 1)
+	ra(stacks, 1);
+	rb(stacks, 1);
+	if (toggle == 0)
 		ft_putendl("rr");
 }

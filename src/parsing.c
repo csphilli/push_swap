@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:38:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 18:35:18 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/10 03:12:23 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ t_stacks *parsing(t_stacks *stacks, int ac, char **av)
 		stacks = parse_string(stacks, av[1]);
 	else
 		stacks = parse_array(stacks, ac, av);
+	scan_for_duplicates(stacks);
 	return (stacks);
 }

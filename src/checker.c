@@ -6,45 +6,94 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:20:32 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 18:36:08 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/10 23:54:02 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// static void	validate_input_str(char *str)
-// {
 
-// }
-
-void	exec_parse(t_stacks *stacks, char *str)
+void	exec_parse(t_stacks *stacks, const char *line)
 {
-	if (ft_strequ("sa", str))
-		sa(stacks);
-	else if (ft_strequ("pa", str))
-		pa(stacks);
-	else if (ft_strequ("pb", str))
-		pb(stacks);
-	else if (ft_strequ("ra", str))
-		ra(stacks, 0);
-	else if (ft_strequ("rb", str))
-		rb(stacks, 0);
-	else if (ft_strequ("rr", str))
+	// printf("INSIDE EXEC PARSE\n");
+	if (ft_strequ("sa", line))
+		sa(stacks, 1);
+	else if (ft_strequ("pa", line))
+		pa(stacks, 1);
+	else if (ft_strequ("pb", line))
+		pb(stacks, 1);
+	else if (ft_strequ("ra", line))
+		ra(stacks, 1);
+	else if (ft_strequ("rb", line))
+		rb(stacks, 1);
+	else if (ft_strequ("rr", line))
 		rr(stacks, 1);
-	else if (ft_strequ("rra", str))
-		rra(stacks, 0);
-	else if (ft_strequ("rrb", str))
-		rrb(stacks, 0);
-	else if (ft_strequ("rrr", str))
+	else if (ft_strequ("rra", line))
+		rra(stacks, 1);
+	else if (ft_strequ("rrb", line))
+		rrb(stacks, 1);
+	else if (ft_strequ("rrr", line))
 		rrr(stacks, 1);
 	else
+	{
+		printf("exec parse error\n");
 		ERROR;
+	}
 	stacks->nbr_moves++;
 }
 
-// void	checker(t_stacks *stacks, int ac, char **av)
-// {
-// 	char	*input_str;
+t_stacks	*checker(t_stacks *stacks, int ac, char **av)
+{
+	t_stacks *tmp;
+	char 	*line;
+	int		ret;
 
-// 	input_str = av[1];
-// }
+	ret = 0;
+	tmp = parsing(stacks, ac, av);
+	while (get_next_line(0, &line) > 0)
+	{
+		exec_parse(stacks, line);
+		free(line);
+	}
+	if (ret < 0)
+	{
+		printf("error in GNL ret\n");
+		ERROR;
+	}
+	check_full_sort(stacks);
+	if (stacks->full_sort == true)
+		ft_putendl("OK");
+	else
+		ft_putendl("KO");
+	return (tmp);
+}
+
+int		main(int ac, char **av)
+{
+	t_stacks *stacks;
+
+	stacks = create_stacks();
+	if (ac > 1)
+	{
+		checker(stacks, ac, av);
+	}
+	else
+	{
+		printf("checker evaluated to ac < 2\n");
+		ERROR;
+	}
+	// printf("LIST A\n");
+	// display_list(stacks->head_a);
+	// if (stacks->head_b != NULL)
+	// {
+	// 	printf("LIST B\n");
+	// 	display_list(stacks->head_b);
+	// }
+	// printf("STATS: ll_a_start:%2d | ll_a_cur:%d | NBR MOVES:%3d | ll_b_cur:%d\n", stacks->ll_a_start,\
+	// 	stacks->ll_a_cur, stacks->nbr_moves, stacks->ll_b_cur);
+	free(stacks);
+	// while (1)
+	// {
+		
+	// }
+}

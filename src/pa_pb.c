@@ -6,13 +6,13 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:50:28 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 17:52:52 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/10 23:07:52 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	pa(t_stacks *stacks)
+void	pa(t_stacks *stacks, int toggle)
 {
 	// if (stacks->head_b != NULL)
 	// {
@@ -20,11 +20,12 @@ void	pa(t_stacks *stacks)
 		pop_b(stacks);
 		stacks->ll_b_cur--;
 		stacks->ll_a_cur++;
-		ft_putendl("pa");
+		if (toggle == 0)
+			ft_putendl("pa");
 	// }
 }
 
-void	pb(t_stacks *stacks)
+void	pb(t_stacks *stacks, int toggle)
 {
 	// if (stacks->head_a != NULL)
 	// {
@@ -32,7 +33,8 @@ void	pb(t_stacks *stacks)
 		pop_a(stacks);
 		stacks->ll_b_cur++;
 		stacks->ll_a_cur--;
-		ft_putendl("pb");
+		if (toggle == 0)
+			ft_putendl("pb");
 	// }
 }
 

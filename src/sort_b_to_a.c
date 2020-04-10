@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 19:26:36 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 16:12:48 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/10 23:10:41 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,32 @@ static void	sort_b_to_a_next(t_stacks *stacks)
 	if (stacks->dir_a == 0 && stacks->dir_b == 1)
 	{
 		while (stacks->moves_a > 0)
-			exec_parse(stacks, "rra");
-			// rra(stacks, 1);
+			// ft_putendl("rra");
+			// exec_parse(stacks, "rra");
+			rra(stacks, 0);
 		while (stacks->moves_b > 0)
-			exec_parse(stacks, "rb");
-			// rb(stacks, 0);
+			// ft_putendl("rb");
+			// exec_parse(stacks, "rb");
+			rb(stacks, 0);
 	}
 	else if (stacks->dir_a == 0 && stacks->dir_b == 0)
 	{
 		while (stacks->moves_a > 0 && stacks->moves_b > 0)
-			exec_parse(stacks, "rrr");
-			// rrr(stacks, 1);
+			// ft_putendl("rrr");
+			// exec_parse(stacks, "rrr");
+			rrr(stacks, 0);
 		while (stacks->moves_a > 0)
-			exec_parse(stacks, "rra");
-			// rra(stacks, 0);
+			// ft_putendl("rra");
+			// exec_parse(stacks, "rra");
+			rra(stacks, 0);
 		while (stacks->moves_b > 0)
-			exec_parse(stacks, "rrb");
-			// rrb(stacks, 0);
+			// ft_putendl("rrb");
+			// exec_parse(stacks, "rrb");
+			rrb(stacks, 0);
 	}
-	exec_parse(stacks, "pa");
-	// pa(stacks);
+	// ft_putendl("pa");
+	// exec_parse(stacks, "pa");
+	pa(stacks, 0);
 }
 
 void	sort_b_to_a(t_stacks *stacks)
@@ -44,23 +50,28 @@ void	sort_b_to_a(t_stacks *stacks)
 	if (stacks->dir_a == 1 && stacks->dir_b == 1)
 	{
 		while (stacks->moves_a > 0 && stacks->moves_b > 0)
-			exec_parse(stacks, "rr");
-			// rr(stacks, 1);
+			// ft_putendl("rr");
+			// exec_parse(stacks, "rr");
+			rr(stacks, 0);
 		while (stacks->moves_a > 0)
-			exec_parse(stacks, "ra");
-			// ra(stacks, 0);
+			// ft_putendl("ra");
+			// exec_parse(stacks, "ra");
+			ra(stacks, 0);
 		while (stacks->moves_b > 0)
-			exec_parse(stacks, "rb");
-			// rb(stacks, 0);
+			// ft_putendl("rb");
+			// exec_parse(stacks, "rb");
+			rb(stacks, 0);
 	}
 	else if (stacks->dir_a == 1 && stacks->dir_b == 0)
 	{
 		while (stacks->moves_a > 0)
-			exec_parse(stacks, "ra");
-			// ra(stacks, 0);
+			// ft_putendl("ra");
+			// exec_parse(stacks, "ra");
+			ra(stacks, 0);
 		while (stacks->moves_b > 0)
-			exec_parse(stacks, "rrb");
-			// rrb(stacks, 0);
+			// ft_putendl("rrb");
+			// exec_parse(stacks, "rrb");
+			rrb(stacks, 0);
 	}
 	sort_b_to_a_next(stacks);
 }

@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 18:35:37 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/10 23:40:31 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,23 @@ void		unshift_a(t_stacks *stacks, int nbr);
 **	ALLOWED LIST MANIPULATIONS
 */
 
-void		pa(t_stacks *stacks);
-void		pb(t_stacks *stacks);
-void    	sa(t_stacks *stacks);
-void		sb(t_stacks *stacks);
-void		ss(t_stacks *stacks);
-void	    ra(t_stacks *stacks, int nbr);
-void	    rb(t_stacks *stacks, int nbr);
-void	    rr(t_stacks *stacks, int nbr);
-void		rra(t_stacks *stacks, int nbr);
-void		rrb(t_stacks *stacks, int nbr);
-void		rrr(t_stacks *stacks, int nbr);
+void		pa(t_stacks *stacks, int toggle);
+void		pb(t_stacks *stacks, int toggle);
+void    	sa(t_stacks *stacks, int toggle);
+void		sb(t_stacks *stacks); // prob delete this if not used
+void		ss(t_stacks *stacks); // probably delete this.
+void	    ra(t_stacks *stacks, int toggle);
+void	    rb(t_stacks *stacks, int toggle);
+void	    rr(t_stacks *stacks, int toggle);
+void		rra(t_stacks *stacks, int toggle);
+void		rrb(t_stacks *stacks, int toggle);
+void		rrr(t_stacks *stacks, int toggle);
 
 /*
 **	Utility functions
 */
 t_stacks 	*parsing(t_stacks *stacks, int ac, char **av);
-void		exec_parse(t_stacks *stacks, char *str);
+void		exec_parse(t_stacks *stacks, const char *str);
 int			get_midpoint(t_lists *list);
 int			ll(t_lists *list);
 t_stacks	*create_stacks(void);
@@ -110,6 +110,7 @@ void		insert_node(t_stacks *stacks, int nbr);
 t_stacks	*run_program(t_stacks *stacks, int ac, char **av);
 t_stacks	*parse_array(t_stacks *stacks, int ac, char **av);
 t_stacks	*parse_string(t_stacks *stacks, char *str);
+int 		count_below_median(t_lists *list);
 
 /*
 **	ALGORITHM FUNCTIONS
