@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/04/13 16:28:49 by csphilli         ###   ########.fr        #
+#    Updated: 2020/04/13 18:08:35 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,12 @@ SRC_FILES = display_list.c\
 			unshifts.c\
 			sorting_parser.c\
 			ra_rb_rr.c\
-			sa.c\
+			sa_sb_ss.c\
 			rra_rrb_rrr.c\
 			pa_pb.c\
 			check_orders.c\
 			sort_2_and_3_numbers.c\
+			sort_5_and_6_numbers.c\
 			sort_a_to_b.c\
 			sort_b_to_a.c\
 			sort_large_sets.c\

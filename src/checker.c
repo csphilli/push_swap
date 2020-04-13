@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:20:32 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 16:17:22 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 18:52:54 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	exec_parse(t_stacks *stacks, const char *line)
 	// printf("INSIDE EXEC PARSE\n");
 	if (ft_strequ("sa", line))
 		sa(stacks, 1);
+	else if (ft_strequ("sb", line))
+		sb(stacks, 1);
 	else if (ft_strequ("pa", line))
 		pa(stacks, 1);
 	else if (ft_strequ("pb", line))

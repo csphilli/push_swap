@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   begin_sort.c                                       :+:      :+:    :+:   */
+/*   sorting_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:41:13 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 16:03:20 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 18:07:50 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	begin_sort(t_stacks *stacks)
 			sort_two_numbers(stacks);
 		else if (stacks->ll_a_start == 3)
 			sort_three_numbers(stacks);
+		else if (stacks->ll_a_start == 5 || stacks->ll_a_start == 6)
+			sort_5_and_6(stacks);
 		else
 		{
 			sort_a_to_b(stacks);

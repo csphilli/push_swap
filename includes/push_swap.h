@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 15:04:16 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 18:08:12 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void		unshift_a(t_stacks *stacks, int nbr);
 void		pa(t_stacks *stacks, int toggle);
 void		pb(t_stacks *stacks, int toggle);
 void    	sa(t_stacks *stacks, int toggle);
-void		sb(t_stacks *stacks); // prob delete this if not used
-void		ss(t_stacks *stacks); // probably delete this.
+void		sb(t_stacks *stacks, int toggle);
+void		ss(t_stacks *stacks, int toggle);
 void	    ra(t_stacks *stacks, int toggle);
 void	    rb(t_stacks *stacks, int toggle);
 void	    rr(t_stacks *stacks, int toggle);
@@ -117,6 +117,7 @@ void		free_list(t_stacks *stacks);
 **	ALGORITHM FUNCTIONS
 */
 
+void		sort_5_and_6(t_stacks *stacks);
 int			to_top(t_lists *list, int nbr);
 t_lists 	*get_next(t_lists *list_a, t_lists *list_b);
 int			next_large(t_lists *list, int nbr);
