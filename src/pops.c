@@ -6,11 +6,19 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 14:28:45 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 14:29:17 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 15:02:13 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+**	Functions to handle the removal of node from a specific list. In retrospect
+**	I could have added a single function and just passed the respective list.
+**	However, my thinking from the beginning was that I'd simply pass the entire
+**	stack struct which included head_a and head_b. I don't want to refactor the
+**	entire project at this point.
+*/
 
 void		pop_a(t_stacks *stacks)
 {

@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:20:32 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/10 23:54:02 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 16:17:22 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	exec_parse(t_stacks *stacks, const char *line)
 		rrr(stacks, 1);
 	else
 	{
-		printf("exec parse error\n");
+		printf("exec parse error\n"); // Remove before submission.
 		ERROR;
 	}
 	stacks->nbr_moves++;
 }
 
-t_stacks	*checker(t_stacks *stacks, int ac, char **av)
+void	checker(t_stacks *stacks, int ac, char **av)
 {
 	t_stacks *tmp;
 	char 	*line;
@@ -57,7 +57,7 @@ t_stacks	*checker(t_stacks *stacks, int ac, char **av)
 	}
 	if (ret < 0)
 	{
-		printf("error in GNL ret\n");
+		printf("error in GNL ret\n"); // Remove before submission.
 		ERROR;
 	}
 	check_full_sort(stacks);
@@ -65,7 +65,6 @@ t_stacks	*checker(t_stacks *stacks, int ac, char **av)
 		ft_putendl("OK");
 	else
 		ft_putendl("KO");
-	return (tmp);
 }
 
 int		main(int ac, char **av)
@@ -74,14 +73,13 @@ int		main(int ac, char **av)
 
 	stacks = create_stacks();
 	if (ac > 1)
-	{
 		checker(stacks, ac, av);
-	}
 	else
 	{
 		printf("checker evaluated to ac < 2\n");
 		ERROR;
 	}
+	printf("nbr_moves: %d\n", stacks->nbr_moves); // Remove before submission.
 	// printf("LIST A\n");
 	// display_list(stacks->head_a);
 	// if (stacks->head_b != NULL)
@@ -91,7 +89,7 @@ int		main(int ac, char **av)
 	// }
 	// printf("STATS: ll_a_start:%2d | ll_a_cur:%d | NBR MOVES:%3d | ll_b_cur:%d\n", stacks->ll_a_start,\
 	// 	stacks->ll_a_cur, stacks->nbr_moves, stacks->ll_b_cur);
-	free(stacks);
+	// free(stacks);
 	// while (1)
 	// {
 		

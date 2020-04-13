@@ -12,6 +12,10 @@
 
 #include "../includes/push_swap.h"
 
+/*
+**	Standard duplicate checker function.
+*/
+
 void	scan_for_duplicates(t_stacks *stacks)
 {
 	t_lists *base;
@@ -34,6 +38,13 @@ void	scan_for_duplicates(t_stacks *stacks)
 		}
 	}
 }
+
+/*
+**	Finds the min and max value from stack a. Again, I could have used a single
+**	function for both lists but I was thinking just passing the struct
+**	that contained both stack addresses instead. Don't feel like refactoring
+**	the code at this point.
+*/
 
 void	min_max_a(t_stacks *stacks)
 {

@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_list.c                                     :+:      :+:    :+:   */
+/*   freeing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 10:34:16 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 16:15:02 by csphilli         ###   ########.fr       */
+/*   Created: 2020/04/11 12:00:02 by csphilli          #+#    #+#             */
+/*   Updated: 2020/04/13 16:19:01 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-**	A function to display the list. Very useful for debugging or can be
-**	implemented to display the final sorted list.
+**	Used to delete the linked list before the program quits in order to free
+**	up the memory. However, once the program terminates, the memory is freed
+**	anyways. This is also run once stack B has been sorted to A. It's a
+**	failsafe to ensure stack B is properly empty and NULL.
 */
 
-void		display_list(t_lists *list)
+void	free_list(t_stacks *stacks)
 {
-	int 	i;
 	t_lists *tmp;
+	t_lists *curr;
 
-	i = 1;	
-	tmp = list;
-	if (tmp)
+	tmp = stacks->head_a;
+	while (tmp)
 	{
-		while (tmp != NULL)
-		{
-			printf("address:%p | list[%2d]:%3d | next:%p\n", tmp, i, tmp->nbr, tmp->next); // change to ft_printf
-			tmp = tmp->next;
-			i++;
-		}
+		curr = tmp;
+		tmp = tmp->next;
+		curr->nbr = '\0';
+		curr->next = NULL;
+		free(curr);
 	}
 }

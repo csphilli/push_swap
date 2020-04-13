@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 19:00:19 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/10 23:49:57 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/11 20:49:08 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 	}
 	else
 		ERROR;
-	
+	free_list(stacks);
 	// printf("LIST A\n");
 	// display_list(stacks->head_a);
 	// if (stacks->head_b != NULL)
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	// }
 	// printf("STATS: ll_a_start:%2d | ll_a_cur:%d | NBR MOVES:%3d | ll_b_cur:%d\n", stacks->ll_a_start,\
 	// 	stacks->ll_a_cur, stacks->nbr_moves, stacks->ll_b_cur);
-
+	// free(stacks);
 	// while (1)
 	// {
 	// }

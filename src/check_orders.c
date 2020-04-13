@@ -12,6 +12,13 @@
 
 #include "../includes/push_swap.h"
 
+/*
+**	Functions handling the checking of whether a list is sorted or not.
+**	Here again, I could have made a single function to handle the checking.
+**	Too far along to bother refactoring at this point. Need to keep progressing
+**	in order to not fall behind.
+*/
+
 
 void	check_order_a(t_stacks *stacks)
 {

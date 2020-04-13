@@ -6,11 +6,20 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 10:12:03 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/10 23:08:40 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 15:10:11 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+**	The allowed manipulation functions stipulated in the instructions.
+**	The toggle is used to handle the printing of the respective functions.
+**	If push_swap sends the instructions, it is sent with a 0 and hence
+**	will print the instruction. Checker sends a 1 so it will not print.
+**	Also notice that rrr sends a 1 to both rra and rrb since only rrr should
+**	be printed.
+*/
 
 void	rra(t_stacks *stacks, int toggle)
 {

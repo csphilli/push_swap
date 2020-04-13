@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/04/10 02:41:01 by csphilli         ###   ########.fr        #
+#    Updated: 2020/04/13 16:28:49 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,22 +33,21 @@ SRC_FILES = display_list.c\
 			find_median.c\
 			error.c\
 			unshifts.c\
-			begin_sort.c\
+			sorting_parser.c\
 			ra_rb_rr.c\
-			sa_sb_ss.c\
+			sa.c\
 			rra_rrb_rrr.c\
 			pa_pb.c\
-			run_program.c\
 			check_orders.c\
-			sort_short.c\
+			sort_2_and_3_numbers.c\
 			sort_a_to_b.c\
 			sort_b_to_a.c\
-			the_big_sort.c\
-			find_cheapest.c\
+			sort_large_sets.c\
+			next_move.c\
 			get_directions.c\
-			pushes.c\
 			pops.c\
-			parsing.c
+			arg_parsing.c\
+			freeing.c
 
 SRC_FILES_PS = push_swap.c
 SRC_FILES_CH = checker.c

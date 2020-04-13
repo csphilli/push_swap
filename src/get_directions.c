@@ -6,16 +6,26 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 14:31:42 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 14:48:17 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 14:51:38 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+**	Pretty self explanatory.
+*/
+
 int	get_midpoint(t_lists *list)
 {
 	return (ll(list) / 2);
 }
+
+/*
+**	ll (ell ell - list length) just computers the current length of the
+**	list to help evaluate the midpoint. This would be nicer if we weren't
+**	restricted with lame line counts per function.
+*/
 
 int	ll(t_lists *list)
 {
@@ -29,6 +39,13 @@ int	ll(t_lists *list)
 	}
 	return (len);
 }
+
+/*
+**	To top takes a number as an argument and counts how many moves
+**	it'll take in order for the number to be placed at the top of the
+**	list. It takes into account whether it's faster to use normal rotation
+**	or reverse rotation.
+*/
 
 int	to_top(t_lists *list, int nbr)
 {
@@ -50,6 +67,11 @@ int	to_top(t_lists *list, int nbr)
 		return (ll(list) - moves);
 }
 
+/*
+**	Next large takes the number in question from stack b and
+**	finds the next largest number from stack a.
+*/
+
 int	next_large(t_lists *list, int nbr)
 {
 	t_lists *tmp;
@@ -65,6 +87,13 @@ int	next_large(t_lists *list, int nbr)
 	}
 	return (tmp->nbr);
 }
+
+/*
+**	Get dir takes the current number being examined as an argument and evaluates
+**	whether it's shorter to get to the top of the list via rotation or
+**	reverse rotation. Returning a value of 1 indicates it's shorter to use
+**	rotation.
+*/
 
 int	get_dir(t_lists *list, int nbr)
 {

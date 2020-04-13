@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_pop_unshift.c                                 :+:      :+:    :+:   */
+/*   unshifts.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:18:23 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/09 14:36:19 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 16:03:01 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+**	Unshifts are used for adding an element to another list via pa or pb.
+*/
 
 void	unshift_b(t_stacks *stacks, int nbr)
 {

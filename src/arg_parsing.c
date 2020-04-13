@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   arg_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:38:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/10 03:12:23 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 16:29:03 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+**	Valid int evaluates whether or not the string passed is indeed a valid int.
+*/
 
 static int	valid_int(char *str)
 {
@@ -34,15 +38,29 @@ static int	valid_int(char *str)
 	return (0);
 }
 
-// static void	free_strsplit(char ***str)
-// {
-// 	char *current;
+/*
+**	Frees the memory ft_strsplit uses in the heap.
+*/
 
-// 	if (str && *str)
-// 	{
-// 		current = **str;
-// 	}
-// }
+static void	free_strsplit(char ***array)
+{
+	char **current;
+
+	if (array && *array)
+	{
+		current = ((*array));
+		while ((*current))
+			free((*(current++)));
+		free((*array));
+		(*array) = NULL;
+	}
+}
+
+/*
+**	First converts numbers from string to number and adds them to a pointer array
+**	via ft_strsplit. Then the parser iterates over through the array and adds
+**	the numbers to the linked list.
+*/
 
 t_stacks *parse_string(t_stacks *stacks, char *str)
 {
@@ -50,7 +68,7 @@ t_stacks *parse_string(t_stacks *stacks, char *str)
 	int i;
 	char **array;
 
-	array = ft_strsplit(str, 32);
+	array = ft_strsplit(str, 32);	
 	i = 0;
 	while (array[i])
 	{
@@ -59,9 +77,14 @@ t_stacks *parse_string(t_stacks *stacks, char *str)
 		stacks->ll_a_start++;
 		i++;
 	}
-	// free(&array);
+	free_strsplit(&array);
 	return (stacks);
 }
+
+/*
+**	Adds numbers to the linked list. Numbers were passed as an argument, not
+**	via a string list.
+*/
 
 t_stacks *parse_array(t_stacks *stacks, int ac, char **av)
 {
@@ -78,6 +101,11 @@ t_stacks *parse_array(t_stacks *stacks, int ac, char **av)
 	}
 	return (stacks);
 }
+
+/*
+**	Evaluates whether or not the argument passed was as string or numbers and
+**	then passes the result to the respective function above.
+*/
 
 t_stacks *parsing(t_stacks *stacks, int ac, char **av)
 {

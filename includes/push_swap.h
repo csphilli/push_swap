@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/10 23:40:31 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 15:04:16 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void        error(void);
 */
 
 void		push_a(t_stacks *stacks, int nbr);
-void		push_b(t_stacks *stacks, int nbr);
+// void		push_b(t_stacks *stacks, int nbr); // Not needed
 void		pop_a(t_stacks *stacks);
 void		pop_b(t_stacks *stacks);
 void		unshift_b(t_stacks *stacks, int nbr);
@@ -110,7 +110,8 @@ void		insert_node(t_stacks *stacks, int nbr);
 t_stacks	*run_program(t_stacks *stacks, int ac, char **av);
 t_stacks	*parse_array(t_stacks *stacks, int ac, char **av);
 t_stacks	*parse_string(t_stacks *stacks, char *str);
-int 		count_below_median(t_lists *list);
+// int 		count_below_median(t_lists *list);
+void		free_list(t_stacks *stacks);
 
 /*
 **	ALGORITHM FUNCTIONS

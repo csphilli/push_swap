@@ -12,6 +12,20 @@
 
 #include "../includes/push_swap.h"
 
+/*
+**	Sorting from A to B. First finds the min and max value. Those values
+**	are protected and not moved to stack b. Then it finds the MEDIAN value.
+**	This is done to cut the list properly in half. If you just assumed that
+**	the middle was max_value / 2, you'd run into chances of infinate looping
+**	due to the majority of the stack being higher than the midpoint which would
+**	result in the list not being put to b up until the midpoint. Also, notice
+**	that the loop is: while (stacks->ll_a_cur > (stacks->ll_a_start / 2) + 2);
+**	This extra two is to account for the min and max values that are protected
+**	and shouldn't be considered in the length of the list. Also, don't you wish
+**	we didn't have the lame function line limit count?! Far more elegant and
+**	less clutter if we didn't...
+*/
+
 static void	push_to_b_part_two(t_stacks *stacks)
 {
 	t_lists *a;
@@ -20,10 +34,8 @@ static void	push_to_b_part_two(t_stacks *stacks)
 	{
 		a = stacks->head_a;
 		if (a->nbr == stacks->a_max || a->nbr == stacks->a_min)
-			// ft_putendl("ra");
 			ra(stacks, 0);
 		else
-			// ft_putendl("pb");
 			pb(stacks, 0);
 	}
 }
@@ -32,41 +44,23 @@ void		sort_a_to_b(t_stacks *stacks)
 {
 	int		median;
 	t_lists *a;
-	int i;
-	// int		less_median;
-	// int		size;
-
-	// size = stacks->ll_a_start / 2 + 2;
-
-	// less_median = count_below_median(stacks->head_a);
+	int 	i;
 
 	i = 0;
-
 	a = stacks->head_a;
 	median = find_median(stacks->head_a);
 	init_min_max(stacks);
 	min_max_a(stacks);
 	stacks->ll_a_cur = stacks->ll_a_start;
-	// printf("ll_a_cur: %d | start: %d\n", stacks->ll_a_cur, stacks->ll_a_start);
-	// printf("stacks->ll_a_c/2: %d\n", stacks->ll_a_cur / 2);
-	// printf("numbers below median: %d\n", less_median);
-	// printf("median: %d\n", median);
 	while (stacks->ll_a_cur > (stacks->ll_a_start / 2) + 2)
 	{
-		// printf("ll_a_cur: %d\n", stacks->ll_a_cur);
 		a = stacks->head_a;
 		if ((a->nbr != stacks->a_max) && (a->nbr != stacks->a_min)
 			&& (a->nbr <= median))
-			// ft_putendl("pb");
-			// exec_parse(stacks, "pb");
 			pb(stacks, 0);
 		else
-			// ft_putendl("ra");
-			// exec_parse(stacks, "ra");
 			ra(stacks, 0);
-		// display_list(stacks->head_a);
 		i++;
 	}
-	// display_list(stacks->head_b);
 	push_to_b_part_two(stacks);
 }

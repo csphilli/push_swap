@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 14:11:30 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/10 23:40:06 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/13 14:44:36 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,3 @@ int 			find_median(t_lists *list_a)
 	return (median);
 }
 
-int 	count_below_median(t_lists *list)
-{
-	int median;
-	int count;
-
-	median = find_median(list);
-	count = 0;
-	while (list)
-	{
-		if (list->nbr <= median)
-			count++;
-		list = list->next;
-	}
-	return (count);
-}
