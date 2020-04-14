@@ -30,6 +30,9 @@ Assuming a valid integer set or string has been passed:
 1.  A check against possible duplicates is performed.\
 2.  The median value is found.\
 3.  Stack A is pushed to B in two stages.\
-  * Excluding the min and max values, values lower than or equal to the median are pushed (PB) to stack B first. Others are rotated (RA).\
-  * Once the list len of A is less than the start / 2, the remaining values are pushed to stack B.  
-4.\
+  3a. Excluding the min and max values, values lower than or equal to the median are pushed (PB) to stack B first. Others are rotated (RA).\
+  3b. Once the list len of A is less than the start / 2, the remaining values are pushed to stack B.\  
+4.  The next best move is found by evaluating both stacks. If a new move costs less than the previous, that move is saved.\
+5.  The saved move is then executed. First doubles are performed, then the remaining moves are carried out with the singles.\
+6.  This process loops until Stack B is empty.\
+7.  The final process evaluates where the min value is. If <= midpoint, the list will use RA to complete. Else, rra.
