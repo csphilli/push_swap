@@ -36,3 +36,5 @@ Assuming a valid integer set or string has been passed:
 5.  The saved move is then executed. First doubles are performed, then the remaining moves are carried out with the singles.\
 6.  This process loops until Stack B is empty.\
 7.  The final process evaluates where the min value is. If <= midpoint, the list will use RA to complete. Else, rra.
+
+Slightly more detailed descriptions are contained in each file above the respective function.
