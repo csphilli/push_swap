@@ -8,28 +8,28 @@ To take an argument of integers (or string and convert to int) and sort them int
 
 ### Rules
 
-PA - Put A - Puts the head of stack a to the head of stack b. Costs 1 move.
-PB - Put B - Puts the head of stack b to the head of stack a. Costs 1 move.
+PA - Put A - Puts the head of stack a to the head of stack b. Costs 1 move.\
+PB - Put B - Puts the head of stack b to the head of stack a. Costs 1 move.\
 
-SA - Swap A - Provided there are more than one integer in stack A, swap the head and head->next value. Costs 1 move.
-SB - Swap B - Same as A but for stack B.
-SS - Swaps both A and B but with a single move.
+SA - Swap A - Provided there are more than one integer in stack A, swap the head and head->next value. Costs 1 move.\
+SB - Swap B - Same as A but for stack B.\
+SS - Swaps both A and B but with a single move.\
 
-RA - Rotate A - Rotates list A. The head value becomes the tail value. Costs 1 move.
-RB - Rotate B - Same as A but for stack B.
-RR - Rotates A and B but with a single move.
+RA - Rotate A - Rotates list A. The head value becomes the tail value. Costs 1 move.\
+RB - Rotate B - Same as A but for stack B.\
+RR - Rotates A and B but with a single move.\
 
-RRA - Reverse Rotate A - The tail value becomes the head value. Costs 1 move.
-RRB - Same as A but for stack B.
-RRR - Reverse Rotates both A and B but costs a single move.
+RRA - Reverse Rotate A - The tail value becomes the head value. Costs 1 move.\
+RRB - Same as A but for stack B.\
+RRR - Reverse Rotates both A and B but costs a single move.\
 
 ### How This Algorithm Functions
 
-Assuming a valid integer set or string has been passed:
+Assuming a valid integer set or string has been passed:\
 
-1.  A check against possible duplicates is performed.
-2.  The median value is found.
-3.  Stack A is pushed to B in two stages.
-  * Excluding the min and max values, values lower than or equal to the median are pushed (PB) to stack B first. Others are rotated (RA).
-  * Once the list len of A is less than the start / 2, the remaining values are pushed to stack B.
-4.  
+1.  A check against possible duplicates is performed.\
+2.  The median value is found.\
+3.  Stack A is pushed to B in two stages.\
+  * Excluding the min and max values, values lower than or equal to the median are pushed (PB) to stack B first. Others are rotated (RA).\
+  * Once the list len of A is less than the start / 2, the remaining values are pushed to stack B.  
+4.\
