@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   next_nbr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 19:00:19 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/14 13:13:40 by csphilli         ###   ########.fr       */
+/*   Created: 2020/04/14 11:35:27 by csphilli          #+#    #+#             */
+/*   Updated: 2020/04/14 13:22:17 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+/*
+**	Next large takes the number in question from stack b and
+**	finds the next largest number from stack a.
+*/
+
+int	next_large(t_lists *list, int nbr)
 {
-	t_stacks	*stacks;
+	t_lists *tmp;
 
-	stacks = create_stacks();
-
-	if (ac > 1)
+	tmp = NULL;
+	while (list)
 	{
-		stacks = parsing(stacks, ac, av);
-		begin_sort(stacks);
-	}
-	return (0);
+		if (list->nbr > nbr && tmp == NULL)
+			tmp = list;
+		if (list->nbr > nbr && list->nbr < tmp->nbr && tmp != NULL)
+			tmp = list;
+		list = list->next;
+	}	
+	return (tmp->nbr);
 }

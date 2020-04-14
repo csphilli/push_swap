@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:38:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 16:29:03 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/14 10:43:46 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	valid_int(char *str)
 		tmp++;
 	while (*tmp)
 	{
-		if (*tmp > '9' && *tmp < '0')
+		if (!ft_isdigit(*tmp))
 			ERROR;
 		tmp++;
 	}

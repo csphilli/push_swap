@@ -68,12 +68,15 @@ void	check_order_b(t_stacks *stacks)
 
 void	check_full_sort(t_stacks *stacks)
 {
-	if (stacks->head_b != NULL)
-		stacks->full_sort = false;
-	else if (stacks->head_a && stacks->head_b == NULL)
+	if (stacks->head_a->next != NULL)
 	{
-		check_order_a(stacks);
-		if (stacks->a_sorted == true)
-			stacks->full_sort = true;
+		if (stacks->head_b != NULL)
+			stacks->full_sort = false;
+		else if (stacks->head_a && stacks->head_b == NULL)
+		{
+			check_order_a(stacks);
+			if (stacks->a_sorted == true)
+				stacks->full_sort = true;
+		}
 	}
 }

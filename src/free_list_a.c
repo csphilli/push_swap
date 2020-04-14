@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeing.c                                          :+:      :+:    :+:   */
+/*   free_list_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 12:00:02 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 16:19:01 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/14 10:54:13 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	failsafe to ensure stack B is properly empty and NULL.
 */
 
-void	free_list(t_stacks *stacks)
+void	free_list_a(t_stacks *stacks)
 {
 	t_lists *tmp;
 	t_lists *curr;

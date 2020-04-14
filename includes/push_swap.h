@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 18:08:12 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/14 10:52:42 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ t_stacks	*run_program(t_stacks *stacks, int ac, char **av);
 t_stacks	*parse_array(t_stacks *stacks, int ac, char **av);
 t_stacks	*parse_string(t_stacks *stacks, char *str);
 // int 		count_below_median(t_lists *list);
-void		free_list(t_stacks *stacks);
+void		free_list_a(t_stacks *stacks);
 
 /*
 **	ALGORITHM FUNCTIONS

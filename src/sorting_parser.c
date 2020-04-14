@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 14:41:13 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 18:07:50 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/14 11:29:05 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	begin_sort(t_stacks *stacks)
 	check_full_sort(stacks);
 	if (stacks->full_sort == false)
 	{
-		if (stacks->ll_a_start == 2)
+		if (stacks->ll_a_start == 1)
+			exit (0);
+		else if (stacks->ll_a_start == 2)
 			sort_two_numbers(stacks);
 		else if (stacks->ll_a_start == 3)
 			sort_three_numbers(stacks);

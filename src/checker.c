@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:20:32 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 18:52:54 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/14 11:10:58 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	exec_parse(t_stacks *stacks, const char *line)
 		rrr(stacks, 1);
 	else
 	{
-		printf("exec parse error\n"); // Remove before submission.
+		// printf("exec parse error\n"); // Remove before submission.
 		ERROR;
 	}
 	stacks->nbr_moves++;
@@ -76,11 +76,7 @@ int		main(int ac, char **av)
 	stacks = create_stacks();
 	if (ac > 1)
 		checker(stacks, ac, av);
-	else
-	{
-		printf("checker evaluated to ac < 2\n");
-		ERROR;
-	}
+
 	printf("nbr_moves: %d\n", stacks->nbr_moves); // Remove before submission.
 	// printf("LIST A\n");
 	// display_list(stacks->head_a);

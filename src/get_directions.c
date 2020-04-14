@@ -6,7 +6,7 @@
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 14:31:42 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 14:51:38 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/14 13:21:53 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,6 @@ int	to_top(t_lists *list, int nbr)
 		return (moves);
 	else
 		return (ll(list) - moves);
-}
-
-/*
-**	Next large takes the number in question from stack b and
-**	finds the next largest number from stack a.
-*/
-
-int	next_large(t_lists *list, int nbr)
-{
-	t_lists *tmp;
-
-	tmp = NULL;
-	while (list)
-	{
-		if (list->nbr > nbr && tmp == NULL)
-			tmp = list;
-		if (list->nbr > nbr && list->nbr < tmp->nbr && tmp != NULL)
-			tmp = list;
-		list = list->next;
-	}
-	return (tmp->nbr);
 }
 
 /*

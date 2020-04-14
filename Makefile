@@ -6,7 +6,7 @@
 #    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/04/13 18:08:35 by csphilli         ###   ########.fr        #
+#    Updated: 2020/04/14 11:58:44 by csphilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,12 @@ SRC_FILES = display_list.c\
 			sort_a_to_b.c\
 			sort_b_to_a.c\
 			sort_large_sets.c\
-			next_move.c\
+			get_next.c\
 			get_directions.c\
 			pops.c\
 			arg_parsing.c\
-			freeing.c
+			free_list_a.c\
+			next_nbr.c
 
 SRC_FILES_PS = push_swap.c
 SRC_FILES_CH = checker.c

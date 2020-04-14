@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_big_sort.c                                     :+:      :+:    :+:   */
+/*   sort_large_sets.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 19:11:35 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 15:58:47 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/04/14 13:21:52 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,8 @@ static void	tidy_up(t_stacks *stacks)
 }
 
 /*
-**	what number is used to identify what number is at the number
-**	of moves that were passed in as an argument in list a. 
-**	It's used to figure out which direction will be assined to
-**	 dir_b in "the_big_sort" function below.
-*/
-
-// static int	what_number(t_lists *list, int moves)
-// {
-// 	while (list && moves--)
-// 		list = list->next;
-// 	return (list->nbr);
-// }
-
-/*
 **	The main sorting algorithm for large numbers. First it evaluates
-**	what the next move will be. Next_move is a file on its own. Check
+**	what the next move will be. Get_next is a file on its own. Check
 **	that out for more information. moves_a and moves_b are found in the
 **	get_directions file. The if statement here needs some explanation
 **	though. The directions to the top of the list all use a midpoint
@@ -66,16 +52,8 @@ void	the_big_sort(t_stacks *stacks)
 		stacks->moves_b = to_top(stacks->head_b, next_move->nbr);
 		stacks->dir_a = get_dir(stacks->head_a, 
 		next_large(stacks->head_a, next_move->nbr));
-		// Run a test of several number stacks and see if this ever gets used.
-		// If not, delete it and adjust comment above.
-		
-		// if (stacks->head_b && what_number(stacks->head_b, 
-		// ll(stacks->head_b) / 2) == next_move->nbr && ll(stacks->head_b) 
-		// % 2 == 1)
-		// 	stacks->dir_b = stacks->dir_a;
-		// else
 		stacks->dir_b = get_dir(stacks->head_b, next_move->nbr);
-		sort_b_to_a(stacks);		
+		sort_b_to_a(stacks);
 	}
 	tidy_up(stacks);
 }
