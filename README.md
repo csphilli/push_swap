@@ -1,6 +1,7 @@
 # push_swap
 
-Push swap is a project that challenges the programmer to create an algorithm that sorts a list of numbers.
+Push swap is a project that challenges the programmer to create an algorithm that sorts a list of numbers.\
+See it in action: https://www.youtube.com/watch?v=8kpR2mUiZpk
 
 ## Objective
 
