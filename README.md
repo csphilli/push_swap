@@ -39,3 +39,8 @@ Assuming a valid integer set or string has been passed:
 7.  The final process evaluates where the min value is. If <= midpoint, the list will use RA to complete. Else, rra.
 
 Slightly more detailed descriptions are contained in each file above the respective function.
+
+## Thoughts about this project
+
+This was such a fun project! It was my first sorting algorith and one that I did entirely on my own. Due to the quarantine,
+I've been doing a lot of coding at home because the school is closed. So I didn't have any peers to provide dedicated guidance. I'm not slowing down at all. I'm using the time to continue to catch up after losing the month when my dad passed away. I'm battling back with all I have. And I'm achieving success. I'm beyond excited about this new career and I'm doing all I can to ensure my success.
