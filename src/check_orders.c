@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_order_a_v1.c                                      :+:      :+:    :+:   */
+/*   check_orders.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/01 14:57:12 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/01 22:36:14 by csphilli         ###   ########.fr       */
+/*   Created: 2020/06/15 13:26:18 by cphillip          #+#    #+#             */
+/*   Updated: 2020/06/15 13:29:25 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 **	Too far along to bother refactoring at this point. Need to keep progressing
 **	in order to not fall behind.
 */
-
 
 void	check_order_a(t_stacks *stacks)
 {

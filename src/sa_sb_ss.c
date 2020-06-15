@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa_sb.c                                            :+:      :+:    :+:   */
+/*   sa_sb_ss.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:41:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 18:03:46 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:39:42 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		sb(t_stacks *stacks, int toggle)
 	}
 }
 
-void	ss(t_stacks *stacks, int toggle)
+void		ss(t_stacks *stacks, int toggle)
 {
 	sa(stacks, 1);
 	sb(stacks, 1);

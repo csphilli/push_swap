@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ra_rb_rr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:33:26 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 15:10:25 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:39:22 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void		rb(t_stacks *stacks, int toggle)
 		stacks->moves_b--;
 		if (toggle == 0)
 			ft_putendl("rb");
-		
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 19:00:19 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/14 13:13:40 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:35:46 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int ac, char **av)
 	t_stacks	*stacks;
 
 	stacks = create_stacks();
-
 	if (ac > 1)
 	{
 		stacks = parsing(stacks, ac, av);

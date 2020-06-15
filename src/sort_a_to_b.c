@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_a_to_b.c                                        :+:      :+:    :+:   */
+/*   sort_a_to_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/07 15:10:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/07 15:14:19 by csphilli         ###   ########.fr       */
+/*   Created: 2020/06/15 13:38:26 by cphillip          #+#    #+#             */
+/*   Updated: 2020/06/15 13:38:55 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		sort_a_to_b(t_stacks *stacks)
 {
 	int		median;
 	t_lists *a;
-	int 	i;
+	int		i;
 
 	i = 0;
 	a = stacks->head_a;

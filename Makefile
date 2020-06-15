@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+         #
+#    By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/04/14 11:58:44 by csphilli         ###   ########.fr        #
+#    Updated: 2020/06/15 14:09:47 by cphillip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,7 @@ HEADER_DIR = ./includes/
 HEADERS = $(addprefix $(HEADER_DIR), $(HEADER_FILES))
 
 SRC_DIR = ./src/
-SRC_FILES = display_list.c\
-			create.c\
+SRC_FILES = create.c\
 			scanning.c\
 			find_median.c\
 			error.c\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_large_sets.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 19:11:35 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/14 13:21:52 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:43:23 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ static void	tidy_up(t_stacks *stacks)
 **	use ra or rb else, rra or rrb.
 */
 
-void	the_big_sort(t_stacks *stacks)
+void		the_big_sort(t_stacks *stacks)
 {
 	t_lists *next_move;
 
 	while (stacks->head_b)
 	{
 		next_move = get_next(stacks->head_a, stacks->head_b);
-		stacks->moves_a = to_top(stacks->head_a, 
+		stacks->moves_a = to_top(stacks->head_a,
 			next_large(stacks->head_a, next_move->nbr));
 		stacks->moves_b = to_top(stacks->head_b, next_move->nbr);
-		stacks->dir_a = get_dir(stacks->head_a, 
+		stacks->dir_a = get_dir(stacks->head_a,
 		next_large(stacks->head_a, next_move->nbr));
 		stacks->dir_b = get_dir(stacks->head_b, next_move->nbr);
 		sort_b_to_a(stacks);
@@ -58,7 +58,7 @@ void	the_big_sort(t_stacks *stacks)
 	tidy_up(stacks);
 }
 
-int		dir_mod(t_lists *list_a, int next_nbr, t_lists *list_b, int nbr)
+int			dir_mod(t_lists *list_a, int next_nbr, t_lists *list_b, int nbr)
 {
 	int	dir_a;
 	int	dir_b;
@@ -70,12 +70,12 @@ int		dir_mod(t_lists *list_a, int next_nbr, t_lists *list_b, int nbr)
 	moves_a = to_top(list_a, next_nbr);
 	moves_b = to_top(list_b, nbr);
 	if (dir_a == dir_b && moves_a > 0 && moves_b > 0)
-		{
-			if (moves_a > moves_b)
-				return (moves_b);
-			else
-				return(moves_a);
-		}
+	{
+		if (moves_a > moves_b)
+			return (moves_b);
+		else
+			return (moves_a);
+	}
 	else
 		return (0);
 }

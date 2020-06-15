@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoimax.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:33:15 by cphillip          #+#    #+#             */
-/*   Updated: 2020/04/09 16:53:57 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:15:39 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 intmax_t		ft_atoimax(const char *str)
 {
-	int i;
-	int sign;
-	intmax_t res;
+	int			i;
+	int			sign;
+	intmax_t	res;
 
 	i = 0;
 	sign = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   next_nbr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:35:27 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/14 13:22:17 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:33:12 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	next_large(t_lists *list, int nbr)
 		if (list->nbr > nbr && list->nbr < tmp->nbr && tmp != NULL)
 			tmp = list;
 		list = list->next;
-	}	
+	}
 	return (tmp->nbr);
 }

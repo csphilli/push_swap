@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 19:26:36 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/14 12:46:22 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:40:47 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	sort_b_to_a_next(t_stacks *stacks)
 	pa(stacks, 0);
 }
 
-void	sort_b_to_a(t_stacks *stacks)
+void		sort_b_to_a(t_stacks *stacks)
 {
 	if (stacks->dir_a == 1 && stacks->dir_b == 1)
 	{

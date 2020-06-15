@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_next.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 13:55:38 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/16 16:24:46 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:36:46 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_lists *get_next(t_lists *a, t_lists *b)
-{	
-	int 	least_moves;
-	int 	moves;
+t_lists	*get_next(t_lists *a, t_lists *b)
+{
+	int		least_moves;
+	int		moves;
 	t_lists *cur;
 	t_lists	*next_move;
-	bool 	check;
+	bool	check;
 
 	cur = b;
 	next_move = cur;

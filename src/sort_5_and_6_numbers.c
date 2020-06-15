@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_5_and_6_numbers.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/13 17:47:11 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 19:13:06 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:44:08 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	get_tail_nbr_b(t_stacks *stacks)
 {
 	t_lists *tail_b;
+
 	if (stacks->head_b != NULL)
 	{
 		tail_b = stacks->head_b;
@@ -33,8 +34,6 @@ static void	to_b_56_part_2(t_stacks *stacks)
 
 	b = stacks->head_b;
 	a = stacks->head_a;
-	
-	
 	if (b && b->next != NULL)
 	{
 		tail_nbr = get_tail_nbr_b(stacks);
@@ -62,7 +61,7 @@ static void	push_to_b_56(t_stacks *stacks)
 			ra(stacks, 0);
 		else
 			pb(stacks, 0);
-		to_b_56_part_2(stacks);		
+		to_b_56_part_2(stacks);
 	}
 }
 
@@ -83,11 +82,11 @@ static void	push_to_a_56(t_stacks *stacks)
 	}
 }
 
-void	sort_5_and_6(t_stacks *stacks)
+void		sort_5_and_6(t_stacks *stacks)
 {
 	push_to_b_56(stacks);
 	if (stacks->head_a->nbr < stacks->head_a->next->nbr)
 		ra(stacks, 0);
 	push_to_a_56(stacks);
-	rra(stacks, 0);	
+	rra(stacks, 0);
 }

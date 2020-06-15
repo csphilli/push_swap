@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_median.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 14:11:30 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 14:44:36 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:32:52 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void		sort_array(long *array, int len)
 {
-	int i;
-	long tmp;
+	int		i;
+	long	tmp;
 
 	i = 0;
 	while (i < len - 1)
@@ -32,10 +32,10 @@ static void		sort_array(long *array, int len)
 	}
 }
 
-int 			find_median(t_lists *list_a)
+int				find_median(t_lists *list_a)
 {
-	int 	len;
-	int 	i;
+	int		len;
+	int		i;
 	int		median;
 	long	*arr;
 
@@ -53,4 +53,3 @@ int 			find_median(t_lists *list_a)
 	free(arr);
 	return (median);
 }
-

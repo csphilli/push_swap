@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:38:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/14 10:43:46 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:31:25 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,19 @@ static void	free_strsplit(char ***array)
 }
 
 /*
-**	First converts numbers from string to number and adds them to a pointer array
-**	via ft_strsplit. Then the parser iterates over through the array and adds
+**	First converts numbers from string to number and adds
+**	them to a pointer array via ft_strsplit. Then the
+**	parser iterates over through the array and adds
 **	the numbers to the linked list.
 */
 
-t_stacks *parse_string(t_stacks *stacks, char *str)
+t_stacks	*parse_string(t_stacks *stacks, char *str)
 {
-	int nbr;
-	int i;
-	char **array;
+	int		nbr;
+	int		i;
+	char	**array;
 
-	array = ft_strsplit(str, 32);	
+	array = ft_strsplit(str, 32);
 	i = 0;
 	while (array[i])
 	{
@@ -82,11 +83,11 @@ t_stacks *parse_string(t_stacks *stacks, char *str)
 }
 
 /*
-**	Adds numbers to the linked list. Numbers were passed as an argument, not
-**	via a string list.
+**	Adds numbers to the linked list. Numbers were
+**	passed as an argument, not via a string list.
 */
 
-t_stacks *parse_array(t_stacks *stacks, int ac, char **av)
+t_stacks	*parse_array(t_stacks *stacks, int ac, char **av)
 {
 	int i;
 	int nbr;
@@ -103,11 +104,12 @@ t_stacks *parse_array(t_stacks *stacks, int ac, char **av)
 }
 
 /*
-**	Evaluates whether or not the argument passed was as string or numbers and
-**	then passes the result to the respective function above.
+**	Evaluates whether or not the argument passed was as string
+**	or numbers and then passes the result to the respective
+**	 function above.
 */
 
-t_stacks *parsing(t_stacks *stacks, int ac, char **av)
+t_stacks	*parsing(t_stacks *stacks, int ac, char **av)
 {
 	if (ac == 2)
 		stacks = parse_string(stacks, av[1]);

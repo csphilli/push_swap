@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 13:12:23 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 16:13:24 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:24:45 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_stacks	*initialize_stacks(t_stacks *stacks)
 	stacks->b_sorted = false;
 	stacks->ll_a_start = 0;
 	stacks->ll_a_cur = 0;
-	stacks->nbr_moves = 0;
 	stacks->ll_b_cur = 0;
 	stacks->dir_a = 0;
 	stacks->dir_b = 0;
@@ -67,7 +66,7 @@ t_stacks	*initialize_stacks(t_stacks *stacks)
 **	a non-desirable number isn't being returned.
 */
 
-void	init_min_max(t_stacks *stacks)
+void		init_min_max(t_stacks *stacks)
 {
 	stacks->a_max = '\0';
 	stacks->a_min = '\0';

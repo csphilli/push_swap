@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_directions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/07 14:31:42 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/14 13:21:53 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:33:39 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	to_top(t_lists *list, int nbr)
 int	get_dir(t_lists *list, int nbr)
 {
 	t_lists	*tmp;
-	int 	i;
+	int		i;
 
 	i = 0;
 	tmp = list;
