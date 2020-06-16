@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:20:32 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/15 13:24:13 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/16 23:26:13 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	checker(t_stacks *stacks, int ac, char **av)
 		ERROR;
 	check_full_sort(stacks);
 	if (stacks->full_sort == true)
-		ft_putendl("OK");
+		ft_printf("OK");
 	else
-		ft_putendl("KO");
+		ft_printf("KO");
 }
 
 int		main(int ac, char **av)
