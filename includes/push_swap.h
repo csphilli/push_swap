@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 12:16:15 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/17 14:40:35 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ typedef struct		s_stacks
 	int				a_min;
 	int				help;
 	int				color;
-	int				display;
+	int				advanced;
+	int				nbr_moves;
 }					t_stacks;
 
 /*
@@ -113,7 +114,7 @@ t_stacks			*run_program(t_stacks *stacks, int ac, char **av);
 t_stacks			*parse_array(t_stacks *stacks, int ac, char **av);
 t_stacks			*parse_string(t_stacks *stacks, char *str);
 void				free_list_a(t_stacks *stacks);
-// void				options(t_stacks *stacks, char **av);
+void				options(t_stacks *stacks, char **av);
 
 /*
 **	ALGORITHM FUNCTIONS

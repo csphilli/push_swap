@@ -6,7 +6,7 @@
 #    By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/06/17 12:16:09 by cphillip         ###   ########.fr        #
+#    Updated: 2020/06/17 14:02:00 by cphillip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRC_FILES = create.c\
 			pops.c\
 			arg_parsing.c\
 			free_list_a.c\
-			next_nbr.c
+			next_nbr.c\
+			options.c
 
 SRC_FILES_PS = push_swap.c
 SRC_FILES_CH = checker.c

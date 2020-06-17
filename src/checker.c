@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:20:32 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 12:38:51 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/17 15:25:26 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,24 @@ void	checker(t_stacks *stacks, int ac, char **av)
 
 int		main(int ac, char **av)
 {
-	t_stacks *stacks;
+	t_stacks	*stacks;
 
 	stacks = create_stacks();
-	if (ac > 1)
+	while (ac > 1 && (ft_strequ("-h", av[1]) || ft_strequ("-c", av[1])
+				|| ft_strequ("-l", av[1]) || ft_strequ("-ae", av[1])))
 	{
-		checker(stacks, ac, av);
+		if (ft_strequ("-ae", av[1]))
+			stacks->advanced = 1;
+		else if (ft_strequ("-c", av[1]))
+			stacks->color = 1;
+		else if (ft_strequ("-h", av[1]))
+			stacks->help = 1;
+		else if (ft_strequ("-l", av[1]))
+			stacks->nbr_moves = 1;
+		ac--;
+		av++;
 	}
+	if (ac > 1)
+		checker(stacks, ac, av);
 	return (0);
 }
