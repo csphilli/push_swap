@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 13:12:23 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/15 13:24:45 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/17 10:33:01 by csphilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ t_stacks	*initialize_stacks(t_stacks *stacks)
 	stacks->dir_b = 0;
 	stacks->moves_a = 0;
 	stacks->moves_b = 0;
+	stacks->help = 0;
+	stacks->color = 0;
+	stacks->display = 0;
 	return (stacks);
 }
 

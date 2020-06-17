@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:33:26 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/15 13:39:22 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/17 12:33:09 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		ra(t_stacks *stacks, int toggle)
 	head = stacks->head_a;
 	tail = stacks->head_a;
 	tmp_head = head;
-	if (stacks->head_a != NULL || stacks->head_a->next != NULL)
+	if (head && head->next != NULL)
 	{
 		while (tail->next != NULL)
 			tail = tail->next;
@@ -43,6 +43,8 @@ void		ra(t_stacks *stacks, int toggle)
 		if (toggle == 0)
 			ft_putendl("ra");
 	}
+	else
+		ERROR;
 }
 
 void		rb(t_stacks *stacks, int toggle)
@@ -54,7 +56,7 @@ void		rb(t_stacks *stacks, int toggle)
 	head = stacks->head_b;
 	tail = stacks->head_b;
 	tmp_head = head;
-	if (stacks->head_b != NULL || stacks->head_b->next != NULL)
+	if (head && head->next != NULL)
 	{
 		while (tail->next != NULL)
 			tail = tail->next;
@@ -67,6 +69,8 @@ void		rb(t_stacks *stacks, int toggle)
 		if (toggle == 0)
 			ft_putendl("rb");
 	}
+	else
+		ERROR;
 }
 
 void		rr(t_stacks *stacks, int toggle)

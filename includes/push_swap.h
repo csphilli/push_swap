@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 10:10:20 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/17 12:16:15 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ typedef struct		s_stacks
 	int				dir_b;
 	int				a_max;
 	int				a_min;
+	int				help;
+	int				color;
+	int				display;
 }					t_stacks;
 
 /*
@@ -110,6 +113,7 @@ t_stacks			*run_program(t_stacks *stacks, int ac, char **av);
 t_stacks			*parse_array(t_stacks *stacks, int ac, char **av);
 t_stacks			*parse_string(t_stacks *stacks, char *str);
 void				free_list_a(t_stacks *stacks);
+// void				options(t_stacks *stacks, char **av);
 
 /*
 **	ALGORITHM FUNCTIONS

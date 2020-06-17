@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:41:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/15 13:39:42 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/17 12:20:51 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		sa(t_stacks *stacks, int toggle)
 
 	head = stacks->head_a;
 	second = head;
-	if (second->next != NULL)
+	if (second && second->next != NULL)
 	{
 		second = second->next;
 		if (second->next != NULL)
@@ -41,6 +41,8 @@ void		sa(t_stacks *stacks, int toggle)
 		if (toggle == 0)
 			ft_putendl("sa");
 	}
+	else
+		ERROR;
 }
 
 void		sb(t_stacks *stacks, int toggle)
@@ -50,7 +52,7 @@ void		sb(t_stacks *stacks, int toggle)
 
 	head = stacks->head_b;
 	second = head;
-	if (second->next != NULL)
+	if (second && second->next != NULL)
 	{
 		second = second->next;
 		if (second->next != NULL)
@@ -68,6 +70,8 @@ void		sb(t_stacks *stacks, int toggle)
 		if (toggle == 0)
 			ft_putendl("sb");
 	}
+	else
+		ERROR;
 }
 
 void		ss(t_stacks *stacks, int toggle)

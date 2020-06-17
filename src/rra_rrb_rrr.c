@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rra_rrb_rrr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 10:12:03 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 15:10:11 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/17 12:37:30 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	rra(t_stacks *stacks, int toggle)
 
 	tail = stacks->head_a;
 	tail_minus_one = tail;
-	if (stacks && stacks->head_a->next != NULL)
+	if (stacks->head_a && stacks->head_a->next != NULL)
 	{
 		while (tail_minus_one->next->next != NULL)
 			tail_minus_one = tail_minus_one->next;
@@ -41,6 +41,8 @@ void	rra(t_stacks *stacks, int toggle)
 		if (toggle == 0)
 			ft_putendl("rra");
 	}
+	else
+		ERROR;
 }
 
 void	rrb(t_stacks *stacks, int toggle)
@@ -50,7 +52,7 @@ void	rrb(t_stacks *stacks, int toggle)
 
 	tail = stacks->head_b;
 	tail_minus_one = tail;
-	if (stacks && stacks->head_b->next != NULL)
+	if (stacks->head_b && stacks->head_b->next != NULL)
 	{
 		while (tail_minus_one->next->next != NULL)
 			tail_minus_one = tail_minus_one->next;
@@ -63,6 +65,8 @@ void	rrb(t_stacks *stacks, int toggle)
 		if (toggle == 0)
 			ft_putendl("rrb");
 	}
+	else
+		ERROR;
 }
 
 void	rrr(t_stacks *stacks, int toggle)
