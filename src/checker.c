@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:20:32 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 15:25:26 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/17 20:56:14 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	checker(t_stacks *stacks, int ac, char **av)
 		ERROR;
 	check_full_sort(stacks);
 	if (stacks->full_sort == true)
-		ft_printf("OK");
+		ok(stacks);
 	else
-		ft_printf("KO");
+		ko(stacks);
 }
 
 int		main(int ac, char **av)
@@ -73,7 +73,7 @@ int		main(int ac, char **av)
 		else if (ft_strequ("-c", av[1]))
 			stacks->color = 1;
 		else if (ft_strequ("-h", av[1]))
-			stacks->help = 1;
+			help();
 		else if (ft_strequ("-l", av[1]))
 			stacks->nbr_moves = 1;
 		ac--;

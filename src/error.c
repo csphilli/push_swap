@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csphilli <csphilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 13:20:42 by csphilli          #+#    #+#             */
-/*   Updated: 2020/04/13 16:16:18 by csphilli         ###   ########.fr       */
+/*   Updated: 2020/06/17 20:53:09 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-**	Basic error function. Could use some elaboration at various parts of the
-**	program. Simly printing "Errror" isn't going to specifically say WHERE
-**	the error occured. This is default for the instructions though.
+**	Error functions. 
 */
 
 void	error(void)
 {
-	write(2, "Error\n", 6);
+	ft_printf("Error\n");
+	exit(-1);
+}
+
+void	invalid_cmd(void)
+{
+	ft_printf("Error: Invalid Command entered. Acceptable commands\n");
+	ft_printf("are: SA SB SS RA RB RR RRA RRB RRR\n\n");
+	ft_printf("Please try again.\n");
 	exit(-1);
 }

@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 14:40:35 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/17 21:06:09 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # include "../libft/header/libft.h"
 # include "../libft/ft_printf/includes/ft_printf.h"
 # define ERROR error()
+# define ER_INV_CMD invalid_cmd()
+# define ER_A_EMPTY "Error: Stack A is empty - Cannot execute command.\n"
+# define ER_B_EMPTY "Error: Stack B is empty - Cannot execute command.\n"
+# define ER_GNL "Error: Get Next Line failed to parse in checker function.\n"
+# define ER_INV_INPUT "Error: Invalid inputs.\n"
+# define ER_DUP "Error: Duplicate value found.\n"
+
+
 
 /*
 **	STRUCTS
@@ -56,6 +64,7 @@ typedef struct		s_stacks
 	int				nbr_moves;
 }					t_stacks;
 
+
 /*
 **	ERROR HANDLING FUNCTIONS
 */
@@ -92,6 +101,9 @@ void				rrr(t_stacks *stacks, int toggle);
 **	UTILITY FUNCTIONS
 */
 
+void				ok(t_stacks *stacks);
+void				ko(t_stacks *stacks);
+void				help(void);
 t_stacks			*parsing(t_stacks *stacks, int ac, char **av);
 void				exec_parse(t_stacks *stacks, const char *str);
 int					get_midpoint(t_lists *list);
