@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 19:38:00 by cphillip          #+#    #+#             */
-/*   Updated: 2020/06/18 10:59:03 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 14:48:18 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,7 @@ void	help(void)
 	ft_printf(YELLOW"-c"RESET);
 	ft_printf("\tcoloring of the OK and KO results.\n");
 	ft_printf(YELLOW"-ae"RESET);
-	ft_printf("\tto enable more descriptive error messages.\n");
-	ft_printf(YELLOW"-v"RESET);
-	ft_printf("\tto see the program in action. NOTE! Must have\n");
-	ft_printf("\t\tPython3 and Quicktime installed.\n");
-	ft_printf(YELLOW"-d"RESET);
-	ft_printf("\tto display sorted list with node addresses and\n");
-	ft_printf("\t\tfinal move count.\n\n");
+	ft_printf("\tto enable more descriptive error messages.\n\n");
 	ft_printf("End of options descriptions. Please restart program.\n\n");
 	exit(0);
 }
