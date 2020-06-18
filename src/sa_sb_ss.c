@@ -6,15 +6,20 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:41:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 12:20:51 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 10:43:41 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/*
-**	Only used sa when I pushed the list to stack_b in the beginning.
-*/
+static void	stack_error(t_stacks *stacks, char *i)
+{
+	if (ft_strequ("a", i))
+		stacks->advanced == 1 ? ft_printf(ER_A_EMP) : ft_printf(ERROR);
+	else if (ft_strequ("b", i))
+		stacks->advanced == 1 ? ft_printf(ER_B_EMP) : ft_printf(ERROR);
+	exit(-1);
+}
 
 void		sa(t_stacks *stacks, int toggle)
 {
@@ -42,7 +47,7 @@ void		sa(t_stacks *stacks, int toggle)
 			ft_putendl("sa");
 	}
 	else
-		ERROR;
+		stack_error(stacks, "a");
 }
 
 void		sb(t_stacks *stacks, int toggle)
@@ -71,7 +76,7 @@ void		sb(t_stacks *stacks, int toggle)
 			ft_putendl("sb");
 	}
 	else
-		ERROR;
+		stack_error(stacks, "b");
 }
 
 void		ss(t_stacks *stacks, int toggle)

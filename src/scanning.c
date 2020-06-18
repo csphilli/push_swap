@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:37:51 by cphillip          #+#    #+#             */
-/*   Updated: 2020/06/15 13:37:54 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 11:10:56 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,17 @@
 **	Standard duplicate checker function.
 */
 
-void	scan_for_duplicates(t_stacks *stacks)
+static void	dup_error(t_stacks *stacks, int nbr)
+{
+	if (stacks->advanced == 1)
+		ft_printf("Error: Duplicate value "YELLOW"%d"RESET" found.", nbr);
+	else
+		ft_printf("Error");
+	ft_printf("\n");
+	exit(-1);
+}
+
+void		scan_for_duplicates(t_stacks *stacks)
 {
 	t_lists *base;
 	t_lists *iterate;
@@ -31,7 +41,7 @@ void	scan_for_duplicates(t_stacks *stacks)
 			while (iterate != NULL)
 			{
 				if (iterate->nbr == base->nbr)
-					ERROR;
+					dup_error(stacks, iterate->nbr);
 				iterate = iterate->next;
 			}
 			base = base->next;
@@ -46,7 +56,7 @@ void	scan_for_duplicates(t_stacks *stacks)
 **	the code at this point.
 */
 
-void	min_max_a(t_stacks *stacks)
+void		min_max_a(t_stacks *stacks)
 {
 	t_lists *a;
 	int		index;

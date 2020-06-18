@@ -6,18 +6,26 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:20:32 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 20:56:14 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 10:49:55 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	exec_parse(t_stacks *stacks, const char *line)
+static void	inv_command(t_stacks *stacks)
+{
+	stacks->advanced == 1 ? ft_printf(ER_INV_CMD) : ft_printf(ERROR);
+	exit(-1);
+}
+
+void		exec_parse(t_stacks *stacks, const char *line)
 {
 	if (ft_strequ("sa", line))
 		sa(stacks, 1);
 	else if (ft_strequ("sb", line))
 		sb(stacks, 1);
+	else if (ft_strequ("ss", line))
+		ss(stacks, 1);
 	else if (ft_strequ("pa", line))
 		pa(stacks, 1);
 	else if (ft_strequ("pb", line))
@@ -35,10 +43,10 @@ void	exec_parse(t_stacks *stacks, const char *line)
 	else if (ft_strequ("rrr", line))
 		rrr(stacks, 1);
 	else
-		ERROR;
+		inv_command(stacks);
 }
 
-void	checker(t_stacks *stacks, int ac, char **av)
+void		checker(t_stacks *stacks, int ac, char **av)
 {
 	t_stacks	*tmp;
 	char		*line;
@@ -52,7 +60,10 @@ void	checker(t_stacks *stacks, int ac, char **av)
 		free(line);
 	}
 	if (ret < 0)
-		ERROR;
+	{
+		stacks->advanced == 1 ? ft_printf(ER_GNL) : ft_printf(ERROR);
+		exit(-1);
+	}
 	check_full_sort(stacks);
 	if (stacks->full_sort == true)
 		ok(stacks);
@@ -60,7 +71,7 @@ void	checker(t_stacks *stacks, int ac, char **av)
 		ko(stacks);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_stacks	*stacks;
 

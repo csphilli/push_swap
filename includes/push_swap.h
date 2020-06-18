@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 21:06:09 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 10:42:04 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@
 # include <stdbool.h>
 # include "../libft/header/libft.h"
 # include "../libft/ft_printf/includes/ft_printf.h"
-# define ERROR error()
-# define ER_INV_CMD invalid_cmd()
-# define ER_A_EMPTY "Error: Stack A is empty - Cannot execute command.\n"
-# define ER_B_EMPTY "Error: Stack B is empty - Cannot execute command.\n"
+# define ERROR "Error\n"
+# define ER_INV_CMD "Error: Invalid entry. Use sa sb ss ra rb rr rra rrb rrr.\n"
+# define ER_A_EMP "Error: Stack A has 1 or 0 values. Cannot execute command.\n"
+# define ER_B_EMP "Error: Stack B has 1 or 0 values. Cannot execute command.\n"
 # define ER_GNL "Error: Get Next Line failed to parse in checker function.\n"
 # define ER_INV_INPUT "Error: Invalid inputs.\n"
 # define ER_DUP "Error: Duplicate value found.\n"
-
-
+# define ER_MALLOC "Error: Failed to allocate memory.\n"
 
 /*
 **	STRUCTS
@@ -63,7 +62,6 @@ typedef struct		s_stacks
 	int				advanced;
 	int				nbr_moves;
 }					t_stacks;
-
 
 /*
 **	ERROR HANDLING FUNCTIONS
@@ -136,7 +134,7 @@ void				sort_5_and_6(t_stacks *stacks);
 int					to_top(t_lists *list, int nbr);
 t_lists				*get_next(t_lists *list_a, t_lists *list_b);
 int					next_large(t_lists *list, int nbr);
-int					find_median(t_lists *list_a);
+int					find_median(t_stacks *stacks, t_lists *list_a);
 void				the_big_sort(t_stacks *stacks);
 void				sort_a_to_b(t_stacks *stacks);
 void				sort_b_to_a(t_stacks *stacks);

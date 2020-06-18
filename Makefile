@@ -6,7 +6,7 @@
 #    By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/06/17 21:08:37 by cphillip         ###   ########.fr        #
+#    Updated: 2020/06/18 11:07:25 by cphillip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ SRC_DIR = ./src/
 SRC_FILES = create.c\
 			scanning.c\
 			find_median.c\
-			error.c\
 			unshifts.c\
 			sorting_parser.c\
 			ra_rb_rr.c\

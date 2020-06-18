@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:38:26 by cphillip          #+#    #+#             */
-/*   Updated: 2020/06/15 13:38:55 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 10:26:40 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		sort_a_to_b(t_stacks *stacks)
 
 	i = 0;
 	a = stacks->head_a;
-	median = find_median(stacks->head_a);
+	median = find_median(stacks, stacks->head_a);
 	init_min_max(stacks);
 	min_max_a(stacks);
 	stacks->ll_a_cur = stacks->ll_a_start;

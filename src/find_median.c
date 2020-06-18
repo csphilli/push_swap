@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 14:11:30 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/15 13:32:52 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 10:24:44 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		sort_array(long *array, int len)
 	}
 }
 
-int				find_median(t_lists *list_a)
+int				find_median(t_stacks *stacks, t_lists *list_a)
 {
 	int		len;
 	int		i;
@@ -41,7 +41,10 @@ int				find_median(t_lists *list_a)
 
 	len = ll(list_a);
 	if (!(arr = (long*)malloc(sizeof(long) * len)))
-		ERROR;
+	{
+		stacks->advanced == 1 ? ft_printf(ER_MALLOC) : ft_printf(ERROR);
+		exit(-1);
+	}
 	i = -1;
 	while (++i < len)
 	{

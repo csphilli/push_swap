@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 13:12:23 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 14:47:50 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 11:06:14 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ t_stacks	*create_stacks(void)
 {
 	t_stacks	*new;
 
-	new = (t_stacks*)malloc(sizeof(t_stacks));
+	if (!(new = (t_stacks*)malloc(sizeof(t_stacks))))
+	{
+		ft_printf(ERROR);
+		exit(-1);
+	}
 	new = initialize_stacks(new);
 	return (new);
 }
@@ -33,7 +37,11 @@ t_lists		*create_new_node(int nbr)
 {
 	t_lists		*new;
 
-	new = (t_lists*)malloc(sizeof(t_lists));
+	if (!(new = (t_lists*)malloc(sizeof(t_lists))))
+	{
+		ft_printf(ERROR);
+		exit(-1);
+	}
 	new->nbr = nbr;
 	new->next = NULL;
 	return (new);
