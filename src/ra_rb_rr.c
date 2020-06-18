@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:33:26 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/18 10:31:26 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 13:52:42 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ void		ra(t_stacks *stacks, int toggle)
 		if (toggle == 0)
 			ft_putendl("ra");
 	}
-	else
-	{
-		stacks->advanced == 1 ? ft_printf(ER_A_EMP) : ft_printf(ERROR);
-		exit(-1);
-	}
 }
 
 void		rb(t_stacks *stacks, int toggle)
@@ -71,11 +66,6 @@ void		rb(t_stacks *stacks, int toggle)
 		stacks->moves_b--;
 		if (toggle == 0)
 			ft_putendl("rb");
-	}
-	else
-	{
-		stacks->advanced == 1 ? ft_printf(ER_B_EMP) : ft_printf(ERROR);
-		exit(-1);
 	}
 }
 

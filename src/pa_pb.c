@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 18:50:28 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/15 13:37:15 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 13:43:18 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,28 @@
 
 void	pa(t_stacks *stacks, int toggle)
 {
-	unshift_a(stacks, stacks->head_b->nbr);
-	pop_b(stacks);
-	stacks->ll_b_cur--;
-	stacks->ll_a_cur++;
-	if (toggle == 0)
-		ft_putendl("pa");
+	if (stacks->head_b && stacks->head_b != NULL)
+	{
+		unshift_a(stacks, stacks->head_b->nbr);
+		pop_b(stacks);
+		stacks->ll_b_cur--;
+		stacks->ll_a_cur++;
+		if (toggle == 0)
+			ft_putendl("pa");
+	}
 }
 
 void	pb(t_stacks *stacks, int toggle)
 {
-	unshift_b(stacks, stacks->head_a->nbr);
-	pop_a(stacks);
-	stacks->ll_b_cur++;
-	stacks->ll_a_cur--;
-	if (toggle == 0)
-		ft_putendl("pb");
+	if (stacks->head_a && stacks->head_a != NULL)
+	{
+		unshift_b(stacks, stacks->head_a->nbr);
+		pop_a(stacks);
+		stacks->ll_b_cur++;
+		stacks->ll_a_cur--;
+		if (toggle == 0)
+			ft_putendl("pb");
+	}
 }
 
 /*
