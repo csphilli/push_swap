@@ -6,7 +6,7 @@
 #    By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/30 10:46:10 by csphilli          #+#    #+#              #
-#    Updated: 2020/06/18 11:07:25 by cphillip         ###   ########.fr        #
+#    Updated: 2020/06/18 14:25:35 by cphillip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRC_FILES = create.c\
 			free_list_a.c\
 			next_nbr.c\
 			ok_ko.c\
-			help.c
+			help.c\
+			error.c
 
 SRC_FILES_PS = push_swap.c
 SRC_FILES_CH = checker.c

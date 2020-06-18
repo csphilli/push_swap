@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:14:17 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/18 12:25:21 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 14:27:37 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define ER_INV_INPUT "Error: Invalid inputs.\n"
 # define ER_DUP "Error: Duplicate value found.\n"
 # define ER_MALLOC "Error: Failed to allocate memory.\n"
-# define ER_NAN "Error: Not a valid integer.\n"
+# define ER_NAN "Error: Invalid INT and/or char entered."
 # define ER_SIZE "Error: Number is not a valid INT size.\n"
 
 /*
@@ -69,7 +69,7 @@ typedef struct		s_stacks
 **	ERROR HANDLING FUNCTIONS
 */
 
-void				error(void);
+void				invalid_input(t_stacks *stacks, char *str);
 
 /*
 **	GENERAL LIST FUNCTIONS

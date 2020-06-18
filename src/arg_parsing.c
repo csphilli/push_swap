@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:38:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/18 12:22:27 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 14:25:52 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ static int	valid_int(t_stacks *stacks, char *str)
 	while (*tmp)
 	{
 		if (!ft_isdigit(*tmp))
-		{
-			stacks->advanced == 1 ? ft_printf(ER_NAN) : ft_printf(ERROR);
-			exit(-1);
-		}
+			invalid_input(stacks, tmp);
 		tmp++;
 	}
 	nbr = ft_atoimax(str);
