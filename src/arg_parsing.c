@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 16:38:20 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/17 11:29:02 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/18 12:22:27 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	Valid int evaluates whether or not the string passed is indeed a valid int.
 */
 
-static int	valid_int(char *str)
+static int	valid_int(t_stacks *stacks, char *str)
 {
 	intmax_t	nbr;
 	char		*tmp;
@@ -27,14 +27,20 @@ static int	valid_int(char *str)
 	while (*tmp)
 	{
 		if (!ft_isdigit(*tmp))
-			ERROR;
+		{
+			stacks->advanced == 1 ? ft_printf(ER_NAN) : ft_printf(ERROR);
+			exit(-1);
+		}
 		tmp++;
 	}
 	nbr = ft_atoimax(str);
 	if (nbr >= (-2147483647 - 1) && nbr <= 2147483648)
 		return (nbr);
 	else
-		ERROR;
+	{
+		stacks->advanced == 1 ? ft_printf(ER_SIZE) : ft_printf(ERROR);
+		exit(-1);
+	}
 	return (0);
 }
 
@@ -73,7 +79,7 @@ t_stacks	*parse_string(t_stacks *stacks, char *str)
 	i = 0;
 	while (array[i])
 	{
-		nbr = valid_int(array[i]);
+		nbr = valid_int(stacks, array[i]);
 		push_a(stacks, nbr);
 		stacks->ll_a_start++;
 		i++;
@@ -95,7 +101,7 @@ t_stacks	*parse_array(t_stacks *stacks, int ac, char **av)
 	i = 1;
 	while (ac-- > 1)
 	{
-		nbr = valid_int(av[i]);
+		nbr = valid_int(stacks, av[i]);
 		push_a(stacks, nbr);
 		stacks->ll_a_start++;
 		i++;
