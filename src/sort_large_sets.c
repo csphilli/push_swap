@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 19:11:35 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/15 13:43:23 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/23 11:10:05 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ void		the_big_sort(t_stacks *stacks)
 	}
 	tidy_up(stacks);
 }
+
+/*
+**	Dir Mod is used in conjunction with get_next found in the
+**	get_next file. It is used to return the least number of moves
+**	from either list a or b if the direction of those moves
+**	to the top of their stacks is the same, or zero which would
+**	mean that the direction to the top is not the same.
+*/
 
 int			dir_mod(t_lists *list_a, int next_nbr, t_lists *list_b, int nbr)
 {

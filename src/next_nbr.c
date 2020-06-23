@@ -6,7 +6,7 @@
 /*   By: cphillip <cphillip@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 11:35:27 by csphilli          #+#    #+#             */
-/*   Updated: 2020/06/15 13:33:12 by cphillip         ###   ########.fr       */
+/*   Updated: 2020/06/23 10:15:13 by cphillip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 /*
 **	Next large takes the number in question from stack b and
-**	finds the next largest number from stack a.
+**	finds the next largest number from stack a. Two if statements
+**	are necessary because the first time the comparison runs,
+**	there isn't a value for TMP. The second, and subsequent, comparisons
+**	TMP will not be NULL so it will use that if statement to make
+**	the comparison.
 */
 
 int	next_large(t_lists *list, int nbr)
