@@ -3,6 +3,8 @@
 Push swap is a project that challenges the programmer to create an algorithm that sorts a list of numbers.\
 See it in action: https://www.youtube.com/watch?v=8kpR2mUiZpk
 
+![](<push_swap.png>)
+
 ## Objective
 
 To take an argument of integers (or string and convert to int) and sort them into ascending order using only 2 stacks and a restricted set of rules for sorting. Extra points are awarded for sorting with lower moves. There are two programs running simultaneously. Push_swap and Checker. Push_swap handles the algorithm and sends instructions to stdout where Checker picks up the instructions and performs those operations. Checker then returns OK or KO depending on if your list is sorted.
